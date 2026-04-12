@@ -1,29 +1,261 @@
-/* --- Стили для навигационных ссылок под шапкой --- */
-.nav-links {
-    display: flex; /* Выстраиваем ссылки в ряд */
-    justify-content: center; /* Центрируем весь блок */
-    gap: 20px; /* Расстояние между ссылками */
-    margin-top: 20px; /* Отступ от заголовка */
-    flex-wrap: wrap; /* Если экран узкий, ссылки перенесутся на следующую строку */
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дипломная работа: Telegram-бот на Python</title>
+    <style>
+        /* --- Основные настройки страницы (Спокойный синий фон) --- */
+        body {
+            background-color: #e6f2ff; /* Светло-голубой фон */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50; /* Темно-серый текст для хорошей читаемости */
+            line-height: 1.75;
+            margin: 0;
+            padding: 20px;
+        }
 
-/* Стиль для самих ссылок (Кнопки) */
-.nav-links a {
-    text-decoration: none; /* Убираем подчеркивание */
-    color: #ffffff; /* Белый цвет текста */
-    background-color: #007bff; /* Основной синий цвет (как в оглавлении) */
-    font-weight: 500;
-    font-size: 16px;
-    padding: 10px 20px; /* Внутренние отступы, чтобы кнопки были пухлыми */
-    border-radius: 20px; /* Скругление углов (делает кнопки "пилюлями") */
-    transition: all 0.3s ease; /* Плавная анимация всех изменений */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
-}
+        /* --- Шапка документа (Титульный лист) --- */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #0056b3;
+        }
+        .header h1 {
+            font-size: 28px;
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
 
-/* Стиль при наведении курсора */
-.nav-links a:hover {
-    background-color: #e74c3c; /* Меняем цвет на красный при наведении */
-    color: #ffffff; /* Текст остается белым */
-    transform: translateY(-3px); /* Сдвигаем кнопку немного вверх */
-    box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3); /* Более заметная тень цвета кнопки */
-}
+        /* --- Навигационные ссылки под шапкой (Кнопки) --- */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px; /* Отступ от заголовка */
+            flex-wrap: wrap; /* Адаптивность для маленьких экранов */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #007bff; /* Синий */
+            font-weight: 500;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 20px; /* Форма "пилюли" */
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a:hover {
+            background-color: #e74c3c; /* Красный при наведении */
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3);
+        }
+
+        /* --- Информация об авторе и теме --- */
+        .author-info {
+            text-align: right;
+            margin-bottom: 60px;
+        }
+        .author-info p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        /* --- Оглавление (Навигация) --- */
+        .toc {
+            background-color: #ffffff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        .toc h2 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin-bottom: 12px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #007bff; /* Синий цвет ссылок */
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .toc a:hover {
+            color: #0056b3; /* Темнее при наведении */
+            transform: translateX(5px);
+        }
+
+        /* --- Основное содержание работы --- */
+        .content {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Стили для заголовков */
+        h1, h2, h3 {
+            color: #2c3e50; /* Темно-серый */
+        }
+
+        h1 {
+             font-size: 36px; /* Крупный заголовок для Введения */
+             border-left: 4px solid #e74c3c; /* Красная линия слева */
+             padding-left: 15px; /* Отступ от линии */
+             margin-top: 60px; /* Отступ сверху перед новым разделом */
+             margin-bottom: 30px; /* Отступ снизу */
+         }
+
+         h2 {
+             font-size: 28px; /* Заголовки разделов */
+             border-left: 4px solid #3498db; /* Синяя линия */
+             padding-left: 15px;
+             margin-top: 60px; /* Большой отступ перед новым разделом */
+             margin-bottom: 25px; /* Отступ после заголовка */
+         }
+
+         h3 {
+             font-size: 24px; /* Подразделы (1.1, 1.2) */
+             border-left: 3px solid #9b59b6; /* Фиолетовая линия */
+             padding-left: 12px;
+             margin-top: 45px; /* Меньше отступа, чем у h2 */
+             margin-bottom: 18px;
+         }
+
+         /* Списки внутри текста */
+         ul, ol {
+             padding-left: 25px; /* Отступ для маркеров списка */
+         }
+         li {
+             margin-bottom: 10px; /* Расстояние между пунктами списка */
+         }
+
+         /* Выделение важного текста */
+         strong, b {
+             color: #e74c3c; /* Красный для акцента */
+         }
+
+         /* Блоки кода (если вы вставите код) */
+         pre, code {
+             background-color: #f8f9fa; /* Светло-серый фон */
+             padding: 10px 15px;
+             border-radius: 8px;
+             font-family: 'Courier New', Courier, monospace;
+             white-space: pre-wrap; /* Перенос строк */
+         }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка (Титульный лист) -->
+    <div class="header">
+        <h1>ИМИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ<br>
+        УСТЬ-ИЛИМСКИЙ ФИЛИАЛ НОВОСИБИРСКОЙ<br>
+        «АКАДЕМИИ ДИЗАЙНА И ПРОГРАММИРОВАНИЯ»<br>
+        Технический факультет</h1>
+        
+        <!-- Блок с навигационными ссылками -->
+        <div class="nav-links">
+            <a href="#introduction">Введение</a>
+            <a href="#practice">Практика</a>
+            <a href="#theory">Теория</a>
+            <a href="#materials">Материалы</a>
+            <a href="#conclusion2">Заключение</a>
+        </div>
+    </div>
+
+    <!-- Информация о работе -->
+    <div class="author-info">
+        <p><strong>Выпускная дипломная работа</strong></p>
+        <p>«Разработка Telegram-бота на языке Python»</p>
+        <p>по направлению</p>
+        <p>09.03.03 «Информатика и вычислительная техника»</p>
+        
+        <p><br>Работу выполнила:<br>Студент Былкова А.Д.<br><br>Научный руководитель:<br>Преподаватель технического факультета Колосов А. Н.</p>
+        
+        <p>Усть-Илимск <span style="color:#e74c3c;">2025</span></p>
+    </div>
+
+    <!-- Оглавление -->
+    <div class="toc">
+        <h2>Оглавление</h2>
+         <ul>
+          <li><a href="#introduction">Введение</a></li>
+          <li><a href="#actuality">1. Актуальность</a></li>
+          <li><a href="#object">2. Объект и предмет исследования</a></li>
+          <li><a href="#goal">3. Цель</a></li>
+          <li><a href="#tasks">4. Задачи</a></li>
+          <li><a href="#hypothesis">5. Гипотеза</a></li>
+          <li><a href="#methods">6. Методы, использованные при написании дипломной работы</a></li>
+          <li><a href="#theory">Основная теоретическая часть</a></li>
+              <ul>
+                <li><a href="#pycharm">• Основные возможности Pycharm Community</a></li>
+                <li><a href="#libs">• Список использованных библиотек</a></li>
+                <li><a href="#functions">• Функции telegram-бота</a></li>
+              </ul>
+          <li><a href="#practice">Основная практическая часть</a></li>
+              <ul>
+                <li><a href="#create-bot">• Создание своего собственного telegram-бота</a></li>
+                <li><a href="#setup">• Настройка Pycharm Community и подключение библиотек.</a></li>
+                <ul>
+                    <li><strong>Функции:</strong></li>
+                    <li><a href="#calc">1. Калькулятор</a></li>
+                    <li><a href="#date">2. Отсчет даты</a></li>
+                    <li><a href="#weather">3. Прогноз погоды</a></li>
+                    <li><a href="#translate">4. Переводчик</a></li>
+                    <li><a href="#ai">5. Нейросеть</a></li>
+                </ul>
+              </ul>
+          <li><a href="#design">Технический-дизайн документ</a></li>
+          <li><а href="#difficulties">Трудности</а></li>
+          <li><а href="#conclusion1">Вывод</а></li>
+          <li><а href="#conclusion2">ЗАКЛЮЧЕНИЕ</а></li>
+          <li><а href="#materials">Список используемых материалов</а></li>
+       </ul>
+    </div>
+
+    <!-- Основное содержание -->
+    <div class="content">
+
+       <!-- ВВЕДЕНИЕ -->
+       <h1 id="introduction"><strong>Введение</strong></h1>
+       <!-- Здесь вставьте текст введения -->
+       <p>В качестве дипломного проекта я решила создать telegram-бота с множеством различных функций на языке программирования Python... [полный текст]</p>
+       
+       <!-- АКТУАЛЬНОСТЬ -->
+       <h2 id="actuality"><strong>1. Актуальность</strong></h2>
+       <!-- Здесь вставьте текст -->
+       <!-- ... -->
+       
+       <!-- ПРАКТИЧЕСКАЯ ЧАСТЬ -->
+       <h2 id="practice"><strong>Основная практическая часть</strong></h2>
+       
+       <!-- КАЛЬКУЛЯТОР -->
+       <h3 id="calc"><strong>1. Калькулятор</strong></h3>
+       <!-- Здесь вставьте текст -->
+       <!-- ... -->
+       
+       <!-- ЗАКЛЮЧЕНИЕ -->
+       <h1 id="conclusion2"><strong>ЗАКЛЮЧЕНИЕ</strong></h1>
+       <!-- Здесь вставьте текст заключения -->
+       
+       <!-- СПИСОК ЛИТЕРАТУРЫ/МАТЕРИАЛОВ -->
+       <h2 id="materials"><strong>Список используемых материалов</strong></h2>
+       <!-- Здесь вставьте список ссылок -->
+       
+    </div>
+
+</body>
+</html>
