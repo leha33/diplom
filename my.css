@@ -1,0 +1,146 @@
+/* --- Основные настройки страницы (Спокойный синий фон) --- */
+body {
+    /* Однотонный синий фон */
+    background-color: #e6f2ff; /* Светло-голубой */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50; /* Темно-серый текст для хорошей читаемости */
+    line-height: 1.75;
+    margin: 0;
+    padding: 20px;
+}
+
+/* --- Шапка документа (Титульный лист) --- */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid #0056b3;
+}
+.header h1 {
+    font-size: 28px;
+    color: #0056b3; /* Синий заголовок */
+    margin-bottom: 10px;
+}
+.header h2 {
+    font-size: 22px;
+    color: #2c3e50;
+}
+
+/* --- Оглавление (Навигация) --- */
+.toc {
+    background-color: #ffffff; /* Белый фон для блока */
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+.toc h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+.toc ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.toc li {
+    margin-bottom: 12px;
+}
+.toc a {
+    text-decoration: none;
+    color: #007bff; /* Синий цвет ссылок */
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.toc a:hover {
+    color: #0056b3; /* Темнее при наведении */
+    transform: translateX(5px);
+}
+
+/* --- Основное содержание работы --- */
+.content {
+    background-color: #ffffff; /* Белый фон для текста */
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* Стили для заголовков (Сделаны светлее и контрастнее) */
+h1, h2, h3 {
+    color: #2c3e50; /* Единый темный цвет для структуры */
+}
+
+h1 {
+     font-size: 36px;
+     border-left: 4px solid #e74c3c; /* Красная линия для акцента */
+     padding-left: 15px;
+     margin-top: 60px;
+     margin-bottom: 30px;
+ }
+
+ h2 {
+     font-size: 28px;
+     border-left: 4px solid #3498db; /* Синяя линия */
+     padding-left: 15px;
+     margin-top: 60px;
+     margin-bottom: 25px;
+ }
+
+ h3 {
+     font-size: 24px;
+     border-left: 3px solid #9b59b6; /* Фиолетовая линия */
+     padding-left: 12px;
+     margin-top: 45px;
+     margin-bottom: 18px;
+ }
+
+ /* Списки и текст (Улучшенная читаемость) */
+ ul, ol {
+     padding-left: 25px; /* Отступ для маркеров списка */
+ }
+ li {
+     margin-bottom: 10px; /* Расстояние между пунктами списка */
+ }
+
+ /* Выделение важного текста (Сделано ярче) */
+ strong, b {
+     color: #e74c3c; /* Красный для акцента */
+ }
+
+ /* Блоки кода (Чистый стиль) */
+ pre, code {
+     background-color: #f8f9fa; /* Светло-серый фон для кода */
+     padding: 10px 15px;
+     border-radius: 8px;
+     font-family: 'Courier New', Courier, monospace;
+     white-space: pre-wrap; /* Перенос строк в коде */
+ }
+/* --- Стили для навигационных ссылок под шапкой --- */
+.nav-links {
+    display: flex; /* Выстраиваем ссылки в ряд */
+    justify-content: center; /* Центрируем весь блок */
+    gap: 20px; /* Расстояние между ссылками */
+    margin-top: 20px; /* Отступ от заголовка */
+    flex-wrap: wrap; /* Если экран узкий, ссылки перенесутся на следующую строку */
+}
+
+/* Стиль для самих ссылок (Кнопки) */
+.nav-links a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #ffffff; /* Белый цвет текста */
+    background-color: #007bff; /* Основной синий цвет (как в оглавлении) */
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 20px; /* Внутренние отступы, чтобы кнопки были пухлыми */
+    border-radius: 20px; /* Скругление углов (делает кнопки "пилюлями") */
+    transition: all 0.3s ease; /* Плавная анимация всех изменений */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+}
+
+/* Стиль при наведении курсора */
+.nav-links a:hover {
+    background-color: #e74c3c; /* Меняем цвет на красный при наведении */
+    color: #ffffff; /* Текст остается белым */
+    transform: translateY(-3px); /* Сдвигаем кнопку немного вверх */
+    box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3); /* Более заметная тень цвета кнопки */
+}
