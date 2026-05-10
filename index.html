@@ -65,6 +65,7 @@
     .floating-emoji:nth-child(10) { top: 50%; left: 45%; animation-duration: 23s; animation-delay: -8s; font-size: 3.0rem; opacity: 0.18; }
     .floating-emoji:nth-child(11) { top: 35%; left: 75%; animation-duration: 19s; animation-delay: -11s; font-size: 2.7rem; opacity: 0.22; }
     .floating-emoji:nth-child(12) { top: 75%; left: 30%; animation-duration: 26s; animation-delay: -1s; font-size: 2.5rem; opacity: 0.2; }
+    .floating-emoji:nth-child(13) { top: 55%; left: 55%; animation-duration: 21s; animation-delay: -14s; font-size: 2.6rem; opacity: 0.22; }
 
     @keyframes floatEmoji {
       0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
@@ -118,6 +119,293 @@
     @keyframes slideIn {
       from { opacity: 0; transform: translateX(20px); }
       to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* —— СВОРАЧИВАЕМЫЕ БЛОКИ —— */
+    .collapsible-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s ease;
+    }
+
+    .collapsible-header:hover {
+      color: #0a3447;
+    }
+
+    .collapse-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #e6f2f8;
+      border: 1px solid #bfdce9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: #26647a;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .collapsible-header.collapsed .collapse-icon {
+      transform: rotate(-90deg);
+    }
+
+    .collapsible-content {
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+      max-height: 800px;
+      opacity: 1;
+    }
+
+    .collapsible-content.collapsed {
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    /* —— ПЛАТФОРМА HTML БЛОК —— */
+    .platform-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #e8f4f8, #d4ecf5);
+      border: 1px solid #b8dae8;
+      border-radius: 20px;
+      padding: 14px 24px;
+      margin-bottom: 28px;
+      font-weight: 500;
+      color: #1a5a72;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+
+    .platform-badge i {
+      font-size: 1.5rem;
+      color: #e44d26;
+    }
+
+    .platform-badge .fa-css3-alt {
+      color: #264de4;
+    }
+
+    .platform-badge .fa-js {
+      color: #f7df1e;
+      background: #323330;
+      border-radius: 4px;
+      padding: 2px 4px;
+      font-size: 0.8rem;
+    }
+
+    .tech-icons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* —— ССЫЛКА НА МАГАЗИН —— */
+    .store-link-container {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .store-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #114c61, #1a6b87);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(17, 76, 97, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .store-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(17, 76, 97, 0.3);
+      background: linear-gradient(135deg, #153b48, #1d7a9a);
+    }
+
+    .store-link i {
+      font-size: 1.3rem;
+    }
+
+    .store-link .fa-arrow-right {
+      transition: transform 0.2s ease;
+    }
+
+    .store-link:hover .fa-arrow-right {
+      transform: translateX(4px);
+    }
+
+    /* —— МОДАЛЬНОЕ ОКНО ПРОЕКТА —— */
+    .project-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .project-modal.active {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: #ffffff;
+      border-radius: 32px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      border: 1px solid #d6e9f0;
+      animation: modalSlideUp 0.3s ease;
+    }
+
+    @keyframes modalSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-header {
+      padding: 24px 28px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0ecf2;
+    }
+
+    .modal-header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #114c61;
+    }
+
+    .modal-close {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #f1f9fd;
+      border: 1px solid #cae2ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #26647a;
+      font-size: 1.3rem;
+    }
+
+    .modal-close:hover {
+      background: #e0f0f7;
+      transform: scale(1.05);
+    }
+
+    .modal-body {
+      padding: 28px;
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .gallery-image {
+      aspect-ratio: 16/9;
+      background: #f1f9fd;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #cae2ed;
+    }
+
+    .gallery-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #579eb3;
+      background: linear-gradient(135deg, #e6f2f8, #f1f9fd);
+    }
+
+    .gallery-placeholder i {
+      font-size: 3rem;
+      margin-bottom: 8px;
+      opacity: 0.6;
+    }
+
+    .gallery-placeholder span {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .project-description {
+      padding: 20px;
+      background: #faf8f6;
+      border-radius: 20px;
+      border: 1px solid #e0ecf2;
+      margin-bottom: 24px;
+    }
+
+    .project-description h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #153b48;
+      margin-bottom: 12px;
+    }
+
+    .project-description p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #1f4456;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tech-tag {
+      padding: 6px 16px;
+      background: #cde3ed;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #1d4a5f;
+      font-weight: 500;
     }
 
     /* —— ШАПКА СЛАЙДА —— */
@@ -244,6 +532,10 @@
       border-radius: 30px;
       background: #e6f2f8;
       transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
     }
 
     .project-link:hover {
@@ -319,7 +611,7 @@
       background: #f1f9fd;
       border-radius: 24px;
       padding: 26px 30px;
-      margin-bottom: 42px;
+      margin-bottom: 28px;
       border: 1px solid #cae2ed;
     }
     .diploma-title {
@@ -346,6 +638,12 @@
       color: #2c6a80;
     }
     .diploma-meta i { margin-right: 6px; color: #4e96af; width: 18px; text-align: center; }
+    
+    /* Обёртка для дипломного блока */
+    .diploma-wrapper {
+      margin-bottom: 20px;
+    }
+
     .links-heading {
       font-size: 1.1rem;
       font-weight: 500;
@@ -353,7 +651,17 @@
       letter-spacing: 0.5px;
       color: #26647a;
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
+
+    .links-heading .collapse-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 0.9rem;
+    }
+
     .circle-links {
       display: flex;
       flex-wrap: wrap;
@@ -395,6 +703,7 @@
     .fa-figma { color: #a259ff; }
     .fa-unity { color: #222c37; }
     .fa-robot { color: #26A5E4; }
+    .fa-gamepad { color: #7c3aed; } /* фиолетовый для игры */
     .link-label {
       font-size: 0.85rem;
       font-weight: 500;
@@ -403,7 +712,7 @@
     }
     .circle-link:hover .link-label { color: #0a3447; }
     hr {
-      margin: 40px 0 20px;
+      margin: 28px 0 20px;
       border: none;
       border-top: 1px solid #c3deea;
     }
@@ -425,25 +734,52 @@
       .slide-title { font-size: 1.5rem; }
       .project-item { flex-wrap: wrap; }
       .project-link { width: 100%; text-align: center; }
+      .modal-header h2 { font-size: 1.4rem; }
+      .store-link { padding: 14px 24px; font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎈 ЛЕТАЮЩИЕ СМАЙЛИКИ -->
+  <!-- 🎈 ЛЕТАЮЩИЕ СМАЙЛИКИ (добавлен игровой 🎮) -->
   <div class="emoji-background">
-    <div class="floating-emoji">😊</div>
+    <div class="floating-emoji">👕</div>
     <div class="floating-emoji">✨</div>
-    <div class="floating-emoji">🎨</div>
+    <div class="floating-emoji">👗</div>
     <div class="floating-emoji">💡</div>
-    <div class="floating-emoji">🖌️</div>
+    <div class="floating-emoji">🧵</div>
     <div class="floating-emoji">🌟</div>
-    <div class="floating-emoji">😎</div>
+    <div class="floating-emoji">👖</div>
     <div class="floating-emoji">🖥️</div>
     <div class="floating-emoji">📐</div>
-    <div class="floating-emoji">🚀</div>
+    <div class="floating-emoji">🛍️</div>
     <div class="floating-emoji">💻</div>
-    <div class="floating-emoji">😇</div>
+    <div class="floating-emoji">🎯</div>
+    <div class="floating-emoji">🎮</div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО ПРОЕКТА -->
+  <div class="project-modal" id="projectModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalProjectTitle">Название проекта</h2>
+        <div class="modal-close" id="modalClose">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="project-gallery" id="modalGallery">
+          <!-- Галерея будет вставлена через JS -->
+        </div>
+        <div class="project-description">
+          <h3>О проекте</h3>
+          <p id="modalDescription">Описание проекта...</p>
+        </div>
+        <div class="project-tech" id="modalTech">
+          <!-- Технологии -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="main-container">
@@ -463,61 +799,110 @@
         </div>
       </div>
 
-      <div class="diploma-section">
-        <div class="diploma-title">
-          <i class="fas fa-graduation-cap"></i> 
-          <span>Редизайн музейного портала: от концепции до прототипа</span>
-        </div>
-        <div class="diploma-desc">
-          Исследование пользовательского опыта, разработка визуального языка и интерактивного прототипа для культурного пространства. 
-          В проекте объединены современные тренды веб-дизайна, адаптивная вёрстка и авторская графика.
-        </div>
-        <div class="diploma-meta">
-          <div><i class="fas fa-calendar-alt"></i> 2025–2026</div>
-          <div><i class="fas fa-pencil-ruler"></i> Figma, Illustrator, Photoshop</div>
-          <div><i class="fas fa-code"></i> HTML, CSS, немного JS</div>
+      <!-- ПЛАТФОРМА HTML -->
+      <div class="platform-badge">
+        <i class="fas fa-globe"></i>
+        <span>Сделано на</span>
+        <div class="tech-icons">
+          <i class="fab fa-html5"></i> HTML
+          <span style="color:#5e7d8c;">+</span>
+          <i class="fab fa-css3-alt"></i> CSS
+          <span style="color:#5e7d8c;">+</span>
+          <i class="fab fa-js"></i> JavaScript
         </div>
       </div>
 
-      <div class="links-heading">
-        <i class="fas fa-arrow-circle-right" style="margin-right: 8px;"></i> мои инструменты и проекты
+      <!-- СВОРАЧИВАЕМЫЙ БЛОК: ДИПЛОМ -->
+      <div class="diploma-wrapper">
+        <div class="diploma-title collapsible-header" id="diplomaHeader">
+          <span style="display: flex; align-items: center; gap: 12px;">
+            <i class="fas fa-tshirt"></i> 
+            Онлайн-магазин одежды с конструктором дизайна
+          </span>
+          <div class="collapse-icon">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="collapsible-content" id="diplomaContent">
+          <div class="diploma-section" style="margin-top: 16px; margin-bottom: 0;">
+            <div class="diploma-desc">
+              Разработка веб-приложения, где пользователи могут самостоятельно проектировать одежду: выбирать фасон, ткань, цвет, наносить принты и вышивку. 
+              В проекте реализован интерактивный 3D-конструктор, система предпросмотра в реальном времени и интеграция с производством.
+            </div>
+            <div class="diploma-meta">
+              <div><i class="fas fa-calendar-alt"></i> 2025–2026</div>
+              <div><i class="fas fa-pencil-ruler"></i> Figma, Three.js, React</div>
+              <div><i class="fas fa-code"></i> WebGL, Node.js, PostgreSQL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- СВОРАЧИВАЕМЫЙ БЛОК: ССЫЛКИ НА СЕРВИСЫ (добавлена Игра) -->
+      <div class="links-heading collapsible-header" id="linksHeader">
+        <span style="display: flex; align-items: center; gap: 8px;">
+          <i class="fas fa-arrow-circle-right"></i> мои инструменты и проекты
+        </span>
+        <div class="collapse-icon">
+          <i class="fas fa-chevron-down"></i>
+        </div>
       </div>
       
-      <div class="circle-links">
-        <div class="circle-link" data-service="github">
-          <div class="icon-circle"><i class="fab fa-github"></i></div>
-          <span class="link-label">GitHub</span>
-        </div>
-        <div class="circle-link" data-service="stackblitz">
-          <div class="icon-circle"><i class="fas fa-bolt"></i></div>
-          <span class="link-label">StackBlitz</span>
-        </div>
-        <div class="circle-link" data-service="figma">
-          <div class="icon-circle"><i class="fab fa-figma"></i></div>
-          <span class="link-label">Figma</span>
-        </div>
-        <div class="circle-link" data-service="unity">
-          <div class="icon-circle"><i class="fab fa-unity"></i></div>
-          <span class="link-label">Unity</span>
-        </div>
-        <div class="circle-link" data-service="telegram">
-          <div class="icon-circle"><i class="fas fa-robot"></i></div>
-          <span class="link-label">Telegram боты</span>
+      <div class="collapsible-content" id="linksContent">
+        <div class="circle-links" style="margin-bottom: 20px;">
+          <div class="circle-link" data-service="github">
+            <div class="icon-circle"><i class="fab fa-github"></i></div>
+            <span class="link-label">GitHub</span>
+          </div>
+          <div class="circle-link" data-service="stackblitz">
+            <div class="icon-circle"><i class="fas fa-bolt"></i></div>
+            <span class="link-label">StackBlitz</span>
+          </div>
+          <div class="circle-link" data-service="figma">
+            <div class="icon-circle"><i class="fab fa-figma"></i></div>
+            <span class="link-label">Figma</span>
+          </div>
+          <div class="circle-link" data-service="unity">
+            <div class="icon-circle"><i class="fab fa-unity"></i></div>
+            <span class="link-label">Unity</span>
+          </div>
+          <div class="circle-link" data-service="telegram">
+            <div class="icon-circle"><i class="fas fa-robot"></i></div>
+            <span class="link-label">Telegram боты</span>
+          </div>
+          <!-- НОВАЯ ССЫЛКА: Игра -->
+          <div class="circle-link" data-service="game">
+            <div class="icon-circle"><i class="fas fa-gamepad"></i></div>
+            <span class="link-label">Игра</span>
+          </div>
         </div>
       </div>
 
       <hr>
-      <div class="footer-note">
+      
+      <!-- ССЫЛКА НА МАГАЗИН ОДЕЖДЫ -->
+      <div class="store-link-container">
+        <a href="#" class="store-link" target="_blank" rel="noopener" id="storeLink">
+          <i class="fas fa-shopping-bag"></i>
+          Перейти в онлайн-магазин одежды
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <div style="margin-top: 8px; font-size: 0.75rem; color: #588da1; opacity: 0.8;">
+          * замените ссылку на адрес вашего магазина
+        </div>
+      </div>
+
+      <div class="footer-note" style="margin-top: 20px;">
         <span><i class="far fa-smile"></i> Быков А. Д. · начинающий дизайнер</span>
         <span><i class="fas fa-map-pin"></i> диплом 2026</span>
       </div>
 
-      <div style="margin-top: 16px; font-size: 0.75rem; color: #588da1; text-align: right; opacity: 0.8;">
-        * нажмите на иконку, чтобы увидеть подробности
+      <div style="margin-top: 12px; font-size: 0.75rem; color: #588da1; text-align: right; opacity: 0.8;">
+        * нажмите на заголовки, чтобы свернуть/развернуть
       </div>
     </div>
 
-    <!-- СЛАЙД С ИНФОРМАЦИЕЙ -->
+    <!-- СЛАЙД С ИНФОРМАЦИЕЙ О СЕРВИСЕ -->
     <div class="info-slide" id="infoSlide">
       <div class="slide-header">
         <div class="back-button" id="backButton">
@@ -548,56 +933,250 @@
 
   <script>
     (function() {
-      // Данные о сервисах и проектах
+      // ============================================
+      // СВОРАЧИВАНИЕ / РАЗВОРАЧИВАНИЕ БЛОКОВ
+      // ============================================
+      function setupCollapsible(headerId, contentId) {
+        const header = document.getElementById(headerId);
+        const content = document.getElementById(contentId);
+        
+        if (!header || !content) return;
+
+        header.addEventListener('click', () => {
+          const isCollapsed = content.classList.contains('collapsed');
+          if (isCollapsed) {
+            content.classList.remove('collapsed');
+            header.classList.remove('collapsed');
+          } else {
+            content.classList.add('collapsed');
+            header.classList.add('collapsed');
+          }
+        });
+      }
+
+      setupCollapsible('diplomaHeader', 'diplomaContent');
+      setupCollapsible('linksHeader', 'linksContent');
+
+      // Ссылка на магазин (заглушка)
+      const storeLink = document.getElementById('storeLink');
+      storeLink.addEventListener('click', function(e) {
+        if (this.getAttribute('href') === '#') {
+          e.preventDefault();
+          console.log('🛍️ Замените href на ссылку вашего магазина одежды');
+        }
+      });
+
+      // ============================================
+      // ДАННЫЕ ПРОЕКТОВ (МЕНЯЙТЕ ФОТО И ТЕКСТЫ ЗДЕСЬ)
+      // ============================================
+      const projectsDetails = {
+        // GitHub проекты
+        'github-diploma': {
+          title: 'Онлайн-магазин с конструктором одежды',
+          description: 'Основной дипломный проект — полноценное веб-приложение для кастомизации одежды. Пользователь выбирает базовую модель (футболка, худи, платье), меняет ткань, цвет, добавляет принты из галереи или загружает свои. Все изменения отображаются в реальном времени на 3D-модели.',
+          tech: ['React', 'Three.js', 'Node.js', 'PostgreSQL', 'Figma'],
+          images: [
+            'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&h=250&fit=crop',
+            'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&h=250&fit=crop'
+          ]
+        },
+        'github-portfolio': {
+          title: 'Личный кабинет дизайнера одежды',
+          description: 'Веб-интерфейс для управления сохранёнными дизайнами, отслеживания статуса заказа и истории покупок. Реализована система избранного и возможность поделиться своим дизайном в соцсетях.',
+          tech: ['React', 'Redux Toolkit', 'REST API', 'JWT Auth'],
+          images: [
+            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop',
+            'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=250&fit=crop'
+          ]
+        },
+        'github-components': {
+          title: 'UI-библиотека для fashion-приложений',
+          description: 'Набор переиспользуемых компонентов: палитра цветов ткани, галерея принтов с фильтрацией, 3D-вьювер одежды, переключатель размеров с визуальной сеткой. Всё адаптивно и доступно.',
+          tech: ['TypeScript', 'SCSS', 'Storybook', 'Jest'],
+          images: [
+            'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=250&fit=crop'
+          ]
+        },
+
+        // StackBlitz проекты
+        'stackblitz-gallery': {
+          title: 'Конструктор принтов онлайн',
+          description: 'Браузерный инструмент для создания и редактирования принтов. Можно загружать изображения, накладывать фильтры, менять масштаб и поворот. Результат сразу отображается на виртуальной футболке.',
+          tech: ['Vue.js', 'Fabric.js', 'Canvas API', 'Vite'],
+          images: [
+            'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=250&fit=crop',
+            'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&h=250&fit=crop'
+          ]
+        },
+        'stackblitz-animation': {
+          title: 'Анимация примерки одежды',
+          description: 'Плавные переходы между цветами и текстурами ткани, анимированная смена моделей одежды, эффект «надевания» на 3D-аватар. Всё для создания эффекта реальной примерки.',
+          tech: ['React', 'Framer Motion', 'Three.js'],
+          images: [
+            'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&h=250&fit=crop'
+          ]
+        },
+        'stackblitz-form': {
+          title: 'Умный подбор размера',
+          description: 'Форма с интеллектуальным подбором размера на основе введённых параметров фигуры. Визуализация посадки одежды и рекомендации по корректировке дизайна под особенности фигуры.',
+          tech: ['Angular', 'Reactive Forms', 'D3.js'],
+          images: [
+            'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=400&h=250&fit=crop'
+          ]
+        },
+
+        // Figma проекты
+        'figma-museum': {
+          title: 'Дизайн-система магазина одежды',
+          description: 'Полноценная дизайн-система для fashion e-commerce: сетка, типографика, цветовые токены, компоненты карточек товаров, фильтров, корзины и конструктора одежды.',
+          tech: ['Figma', 'Auto Layout', 'Design Tokens', 'Prototyping'],
+          images: [
+            'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400&h=250&fit=crop',
+            'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=400&h=250&fit=crop'
+          ]
+        },
+        'figma-identity': {
+          title: 'Айдентика бренда «Свой Стиль»',
+          description: 'Разработка названия, логотипа, цветовой палитры и визуального языка для бренда кастомизируемой одежды. Брендбук, примеры упаковки и оформления соцсетей.',
+          tech: ['Figma', 'Illustrator', 'Branding', 'Typography'],
+          images: [
+            'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=250&fit=crop'
+          ]
+        },
+        'figma-mobile': {
+          title: 'Мобильное приложение «Свой Стиль»',
+          description: 'Дизайн мобильной версии магазина с фокусом на удобный конструктор одежды для смартфонов. Жесты, адаптивные сетки, тёмная тема.',
+          tech: ['Figma', 'iOS Design', 'Material You', 'Prototyping'],
+          images: [
+            'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&h=250&fit=crop',
+            'https://images.unsplash.com/photo-1520006403909-838d6b92c22e?w=400&h=250&fit=crop'
+          ]
+        },
+
+        // Unity проекты
+        'unity-tour': {
+          title: '3D-примерочная',
+          description: 'Виртуальная примерочная, где можно «надеть» спроектированную одежду на 3D-аватар, покрутить, приблизить, посмотреть, как ткань ведёт себя при движении. Интеграция с WebGL для работы в браузере.',
+          tech: ['Unity', 'C#', 'WebGL', 'Avatar SDK'],
+          images: [
+            'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=250&fit=crop',
+            'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=250&fit=crop'
+          ]
+        },
+        'unity-exhibition': {
+          title: 'Симуляция ткани',
+          description: 'Физически корректная симуляция поведения разных типов тканей (хлопок, шёлк, деним) на 3D-модели. Учитываются складки, гравитация, ветер.',
+          tech: ['Unity', 'Cloth Simulation', 'C#', 'Shader Graph'],
+          images: [
+            'https://images.unsplash.com/photo-1434389677669-e08b4cda3104?w=400&h=250&fit=crop'
+          ]
+        },
+        'unity-patterns': {
+          title: 'Генератор текстур ткани',
+          description: 'Процедурная генерация бесшовных текстур ткани (полоска, клетка, горошек, абстракция) с настраиваемыми параметрами. Можно экспортировать в PNG для использования в конструкторе.',
+          tech: ['Unity', 'Shader Graph', 'Compute Shaders'],
+          images: [
+            'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=250&fit=crop'
+          ]
+        },
+
+        // Telegram боты
+        'telegram-guide': {
+          title: 'Бот-стилист',
+          description: 'Чат-бот, который помогает подобрать одежду по типу фигуры, событию и предпочтениям. Предлагает готовые дизайны из каталога и может перенаправить в конструктор для кастомизации.',
+          tech: ['Python', 'Aiogram', 'PostgreSQL', 'ML рекомендации'],
+          images: [
+            'https://images.unsplash.com/photo-1611605698335-8b1569810432?w=400&h=250&fit=crop'
+          ]
+        },
+        'telegram-portfolio': {
+          title: 'Бот уведомлений о заказе',
+          description: 'Бот, который отслеживает статус заказа кастомизированной одежды и присылает уведомления: «принят в работу», «печать принта», «отправлен». Интеграция с производством через API.',
+          tech: ['Python', 'Aiogram', 'Redis', 'REST API'],
+          images: [
+            'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400&h=250&fit=crop'
+          ]
+        },
+        'telegram-game': {
+          title: 'Мини-игра «Модный показ»',
+          description: 'Игра в Telegram: нужно угадать, из какой коллекции представленный дизайн одежды. Рейтинг игроков, еженедельные подборки и призы — скидки на реальные заказы.',
+          tech: ['Python', 'Aiogram', 'SQLite', 'Inline Keyboards'],
+          images: [
+            'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=250&fit=crop'
+          ]
+        },
+
+        // НОВЫЙ ПРОЕКТ: Игра
+        'game-fashion': {
+          title: 'Игра «Собери свой стиль»',
+          description: 'Браузерная мини-игра, в которой игрок собирает виртуальные наряды из ограниченного набора деталей на время. Чем точнее комбинация соответствует заданной теме, тем больше очков. Создана для привлечения внимания к основному магазину.',
+          tech: ['HTML5', 'Canvas', 'JavaScript', 'CSS Animations'],
+          images: [
+            'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop',
+            'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=250&fit=crop'
+          ]
+        }
+      };
+
+      // Данные о сервисах (добавлен раздел "game")
       const servicesData = {
         github: {
           name: 'GitHub',
           icon: 'fab fa-github',
-          description: 'Платформа для хостинга и совместной разработки IT-проектов. Здесь я храню код своих учебных и пет-проектов, использую Git для контроля версий.',
+          description: 'Платформа для хостинга и совместной разработки IT-проектов. Здесь хранится код конструктора одежды, серверной части и UI-библиотеки.',
           projects: [
-            { name: 'Дипломный проект — лендинг музея', meta: 'HTML, CSS, JavaScript · 2026', link: '#' },
-            { name: 'Портфолио начинающего дизайнера', meta: 'Адаптивная вёрстка · 2025', link: '#' },
-            { name: 'UI-компоненты для веб-приложений', meta: 'React, Storybook · 2025', link: '#' }
+            { id: 'github-diploma', name: 'Онлайн-магазин с конструктором одежды', meta: 'React, Three.js, Node.js · 2026' },
+            { id: 'github-portfolio', name: 'Личный кабинет дизайнера одежды', meta: 'React, Redux, JWT Auth · 2025' },
+            { id: 'github-components', name: 'UI-библиотека для fashion-приложений', meta: 'TypeScript, Storybook · 2025' }
           ]
         },
         stackblitz: {
           name: 'StackBlitz',
           icon: 'fas fa-bolt',
-          description: 'Онлайн-среда для веб-разработки прямо в браузере. Быстро прототипирую интерфейсы, тестирую идеи и делюсь живыми примерами кода.',
+          description: 'Онлайн-среда для быстрого прототипирования. Здесь тестирую идеи для конструктора принтов и анимаций примерки.',
           projects: [
-            { name: 'Интерактивный прототип галереи', meta: 'Vue.js, CSS Grid · 2026', link: '#' },
-            { name: 'Анимация интерфейса музея', meta: 'Framer Motion, React · 2025', link: '#' },
-            { name: 'Тестовое задание: форма обратной связи', meta: 'Angular, валидация · 2025', link: '#' }
+            { id: 'stackblitz-gallery', name: 'Конструктор принтов онлайн', meta: 'Vue.js, Canvas API · 2026' },
+            { id: 'stackblitz-animation', name: 'Анимация примерки одежды', meta: 'Framer Motion, Three.js · 2025' },
+            { id: 'stackblitz-form', name: 'Умный подбор размера', meta: 'Angular, D3.js · 2025' }
           ]
         },
         figma: {
           name: 'Figma',
           icon: 'fab fa-figma',
-          description: 'Основной инструмент для дизайна интерфейсов. Создаю макеты, прототипы, дизайн-системы и картинки для рекламы.',
+          description: 'Основной инструмент для дизайна интерфейсов. Создаю макеты магазина, конструктора, мобильного приложения и брендинг.',
           projects: [
-            { name: 'карточки для продажи товара', meta: 'интернет магазина', link: '#' },
-            { name: 'Айдентика для культурного пространства', meta: 'Логотипы', link: '#' },
-            { name: 'Афишы и рекламы', meta: 'инструменты визуальной коммуникации', link: '#' }
+            { id: 'figma-museum', name: 'Дизайн-система магазина одежды', meta: 'Auto Layout, Design Tokens · 2026' },
+            { id: 'figma-identity', name: 'Айдентика бренда «Свой Стиль»', meta: 'Логотип, брендбук · 2025' },
+            { id: 'figma-mobile', name: 'Мобильное приложение «Свой Стиль»', meta: 'iOS/Android, тёмная тема · 2025' }
           ]
         },
         unity: {
           name: 'Unity',
           icon: 'fab fa-unity',
-          description: 'Среда для разработки игр и интерактивных приложений. Экспериментирую с 3D-визуализацией и создаю небольшие демо-сцены.',
+          description: 'Среда для 3D-визуализации. Создаю виртуальную примерочную, симуляцию ткани и генератор текстур.',
           projects: [
-            { name: 'Виртуальный тур по музею', meta: '3D, C# скрипты · 2026', link: '#' },
-            { name: 'Интерактивная выставка', meta: 'Физика, анимации · 2025', link: '#' },
-            { name: 'Генератор паттернов', meta: 'Шейдеры, математика · 2025', link: '#' }
+            { id: 'unity-tour', name: '3D-примерочная', meta: 'WebGL, Avatar SDK · 2026' },
+            { id: 'unity-exhibition', name: 'Симуляция ткани', meta: 'Cloth Simulation · 2025' },
+            { id: 'unity-patterns', name: 'Генератор текстур ткани', meta: 'Shader Graph · 2025' }
           ]
         },
         telegram: {
           name: 'Telegram-боты',
           icon: 'fas fa-robot',
-          description: 'Разрабатываю чат-ботов для автоматизации и развлечения. Использую Python и библиотеку aiogram.',
+          description: 'Чат-боты для магазина: стилист, уведомления о заказах и мини-игры для привлечения клиентов.',
           projects: [
-            { name: 'Бот-гид по музею', meta: 'Расписание, описание экспонатов · 2026', link: '#' },
-            { name: 'Бот для портфолио', meta: 'Отправка работ по запросу · 2025', link: '#' },
-            { name: 'Мини-игра «Угадай экспонат»', meta: 'Inline-кнопки, викторина · 2025', link: '#' }
+            { id: 'telegram-guide', name: 'Бот-стилист', meta: 'Aiogram, ML рекомендации · 2026' },
+            { id: 'telegram-portfolio', name: 'Бот уведомлений о заказе', meta: 'Aiogram, API интеграция · 2025' },
+            { id: 'telegram-game', name: 'Мини-игра «Модный показ»', meta: 'Inline-кнопки, рейтинг · 2025' }
+          ]
+        },
+        // НОВЫЙ РАЗДЕЛ: Игра
+        game: {
+          name: 'Игра',
+          icon: 'fas fa-gamepad',
+          description: 'Веб-игры, созданные для привлечения аудитории и развлечения. Все работают прямо в браузере.',
+          projects: [
+            { id: 'game-fashion', name: 'Игра «Собери свой стиль»', meta: 'HTML5 Canvas · 2026' }
           ]
         }
       };
@@ -609,16 +1188,94 @@
       const serviceDescription = document.getElementById('serviceDescription');
       const projectsList = document.getElementById('projectsList');
 
-      // Функция открытия слайда
+      const modal = document.getElementById('projectModal');
+      const modalClose = document.getElementById('modalClose');
+      const modalProjectTitle = document.getElementById('modalProjectTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalGallery = document.getElementById('modalGallery');
+      const modalTech = document.getElementById('modalTech');
+
+      // Функция открытия модального окна проекта
+      function openProjectModal(projectId) {
+        const project = projectsDetails[projectId];
+        if (!project) return;
+
+        modalProjectTitle.textContent = project.title;
+        modalDescription.textContent = project.description;
+
+        // Заполняем галерею
+        modalGallery.innerHTML = '';
+        if (project.images && project.images.length > 0) {
+          project.images.forEach(imgSrc => {
+            const imgDiv = document.createElement('div');
+            imgDiv.className = 'gallery-image';
+            
+            const img = new Image();
+            img.onerror = () => {
+              imgDiv.innerHTML = `
+                <div class="gallery-placeholder">
+                  <i class="fas fa-tshirt"></i>
+                  <span>фото проекта</span>
+                </div>
+              `;
+            };
+            img.onload = () => {
+              imgDiv.innerHTML = `<img src="${imgSrc}" alt="${project.title}">`;
+            };
+            img.src = imgSrc;
+            
+            modalGallery.appendChild(imgDiv);
+          });
+        } else {
+          modalGallery.innerHTML = `
+            <div class="gallery-image">
+              <div class="gallery-placeholder">
+                <i class="fas fa-camera"></i>
+                <span>добавьте фото</span>
+              </div>
+            </div>
+          `;
+        }
+
+        // Заполняем технологии
+        modalTech.innerHTML = '';
+        if (project.tech && project.tech.length > 0) {
+          project.tech.forEach(tech => {
+            const tag = document.createElement('span');
+            tag.className = 'tech-tag';
+            tag.textContent = tech;
+            modalTech.appendChild(tag);
+          });
+        }
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Закрытие модального окна
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      // Функция открытия слайда сервиса
       function openSlide(serviceKey) {
         const data = servicesData[serviceKey];
         if (!data) return;
 
-        // Обновляем заголовок
         slideTitle.innerHTML = `<i class="${data.icon}"></i><span>${data.name}</span>`;
         serviceDescription.textContent = data.description;
 
-        // Обновляем список проектов
         projectsList.innerHTML = '';
         data.projects.forEach(project => {
           const projectItem = document.createElement('div');
@@ -631,25 +1288,31 @@
               <div class="project-name">${project.name}</div>
               <div class="project-meta">${project.meta}</div>
             </div>
-            <a href="${project.link}" class="project-link" target="_blank" rel="noopener">
+            <button class="project-link" data-project-id="${project.id}">
               <i class="fas fa-external-link-alt"></i> открыть
-            </a>
+            </button>
           `;
           projectsList.appendChild(projectItem);
         });
 
-        // Переключаем видимость
+        // Добавляем обработчики на кнопки "открыть"
+        projectsList.querySelectorAll('.project-link').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const projectId = btn.dataset.projectId;
+            openProjectModal(projectId);
+          });
+        });
+
         mainCard.classList.add('hidden-slide');
         infoSlide.classList.add('active');
       }
 
-      // Функция закрытия слайда
       function closeSlide() {
         mainCard.classList.remove('hidden-slide');
         infoSlide.classList.remove('active');
       }
 
-      // Вешаем обработчики на все круглые ссылки
       document.querySelectorAll('.circle-link').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -658,28 +1321,15 @@
         });
       });
 
-      // Кнопка назад
       backButton.addEventListener('click', closeSlide);
-
-      // Закрытие по клавише Escape
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && infoSlide.classList.contains('active')) {
           closeSlide();
         }
       });
 
-      // Делаем ссылки на проекты неактивными (заглушки)
-      document.addEventListener('click', function(e) {
-        if (e.target.closest('.project-link')) {
-          const link = e.target.closest('.project-link');
-          if (link.getAttribute('href') === '#') {
-            e.preventDefault();
-            console.log('🔗 Замените # на реальную ссылку проекта');
-          }
-        }
-      });
-
-      console.log('✨ Сайт готов! Кликайте на иконки сервисов, чтобы увидеть слайды с информацией.');
+      console.log('✨ Сайт готов! Добавлен раздел "Игра" с проектом "Собери свой стиль".');
+      console.log('🎮 Кликайте на иконку геймпада, чтобы увидеть проект.');
     })();
   </script>
 </body>
