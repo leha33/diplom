@@ -639,7 +639,6 @@
     }
     .diploma-meta i { margin-right: 6px; color: #4e96af; width: 18px; text-align: center; }
     
-    /* Обёртка для дипломного блока */
     .diploma-wrapper {
       margin-bottom: 20px;
     }
@@ -703,7 +702,7 @@
     .fa-figma { color: #a259ff; }
     .fa-unity { color: #222c37; }
     .fa-robot { color: #26A5E4; }
-    .fa-gamepad { color: #7c3aed; } /* фиолетовый для игры */
+    .fa-gamepad { color: #7c3aed; }
     .link-label {
       font-size: 0.85rem;
       font-weight: 500;
@@ -741,7 +740,7 @@
 </head>
 <body>
 
-  <!-- 🎈 ЛЕТАЮЩИЕ СМАЙЛИКИ (добавлен игровой 🎮) -->
+  <!-- 🎈 ЛЕТАЮЩИЕ СМАЙЛИКИ -->
   <div class="emoji-background">
     <div class="floating-emoji">👕</div>
     <div class="floating-emoji">✨</div>
@@ -768,16 +767,12 @@
         </div>
       </div>
       <div class="modal-body">
-        <div class="project-gallery" id="modalGallery">
-          <!-- Галерея будет вставлена через JS -->
-        </div>
+        <div class="project-gallery" id="modalGallery"></div>
         <div class="project-description">
           <h3>О проекте</h3>
           <p id="modalDescription">Описание проекта...</p>
         </div>
-        <div class="project-tech" id="modalTech">
-          <!-- Технологии -->
-        </div>
+        <div class="project-tech" id="modalTech"></div>
       </div>
     </div>
   </div>
@@ -838,7 +833,7 @@
         </div>
       </div>
 
-      <!-- СВОРАЧИВАЕМЫЙ БЛОК: ССЫЛКИ НА СЕРВИСЫ (добавлена Игра) -->
+      <!-- СВОРАЧИВАЕМЫЙ БЛОК: ССЫЛКИ -->
       <div class="links-heading collapsible-header" id="linksHeader">
         <span style="display: flex; align-items: center; gap: 8px;">
           <i class="fas fa-arrow-circle-right"></i> мои инструменты и проекты
@@ -870,17 +865,17 @@
             <div class="icon-circle"><i class="fas fa-robot"></i></div>
             <span class="link-label">Telegram боты</span>
           </div>
-          <!-- НОВАЯ ССЫЛКА: Игра -->
-          <div class="circle-link" data-service="game">
+          <!-- КНОПКА ИГРА — теперь ссылка на внешний сайт -->
+          <a href="https://github.com/leha33/mayn" class="circle-link" target="_blank" rel="noopener" data-service="game" id="gameButton">
             <div class="icon-circle"><i class="fas fa-gamepad"></i></div>
             <span class="link-label">Игра</span>
-          </div>
+          </a>
         </div>
       </div>
 
       <hr>
       
-      <!-- ССЫЛКА НА МАГАЗИН ОДЕЖДЫ -->
+      <!-- ССЫЛКА НА МАГАЗИН -->
       <div class="store-link-container">
         <a href="#" class="store-link" target="_blank" rel="noopener" id="storeLink">
           <i class="fas fa-shopping-bag"></i>
@@ -915,65 +910,54 @@
       </div>
       
       <div class="slide-content">
-        <div class="service-description" id="serviceDescription">
-          Платформа для хостинга и совместной разработки проектов.
-        </div>
-        
+        <div class="service-description" id="serviceDescription"></div>
         <div class="projects-title">
           <i class="fas fa-folder-open"></i>
           <span>Мои проекты</span>
         </div>
-        
-        <div class="projects-list" id="projectsList">
-          <!-- Проекты будут вставлены через JS -->
-        </div>
+        <div class="projects-list" id="projectsList"></div>
       </div>
     </div>
   </div>
 
   <script>
     (function() {
-      // ============================================
-      // СВОРАЧИВАНИЕ / РАЗВОРАЧИВАНИЕ БЛОКОВ
-      // ============================================
+      // СВОРАЧИВАНИЕ
       function setupCollapsible(headerId, contentId) {
         const header = document.getElementById(headerId);
         const content = document.getElementById(contentId);
-        
         if (!header || !content) return;
-
         header.addEventListener('click', () => {
-          const isCollapsed = content.classList.contains('collapsed');
-          if (isCollapsed) {
-            content.classList.remove('collapsed');
-            header.classList.remove('collapsed');
-          } else {
-            content.classList.add('collapsed');
-            header.classList.add('collapsed');
-          }
+          content.classList.toggle('collapsed');
+          header.classList.toggle('collapsed');
         });
       }
-
       setupCollapsible('diplomaHeader', 'diplomaContent');
       setupCollapsible('linksHeader', 'linksContent');
 
-      // Ссылка на магазин (заглушка)
+      // Заглушка для магазина
       const storeLink = document.getElementById('storeLink');
-      storeLink.addEventListener('click', function(e) {
-        if (this.getAttribute('href') === '#') {
+      storeLink.addEventListener('click', (e) => {
+        if (storeLink.getAttribute('href') === '#') {
           e.preventDefault();
-          console.log('🛍️ Замените href на ссылку вашего магазина одежды');
+          console.log('🛍️ Замените href на ссылку вашего магазина');
         }
       });
 
-      // ============================================
-      // ДАННЫЕ ПРОЕКТОВ (МЕНЯЙТЕ ФОТО И ТЕКСТЫ ЗДЕСЬ)
-      // ============================================
+      // Заглушка для игры
+      const gameButton = document.getElementById('gameButton');
+      gameButton.addEventListener('click', (e) => {
+        if (gameButton.getAttribute('href') === '#') {
+          e.preventDefault();
+          console.log('🎮 Замените href на ссылку вашей игры');
+        }
+      });
+
+      // ДАННЫЕ ПРОЕКТОВ (можете менять фото и описание)
       const projectsDetails = {
-        // GitHub проекты
         'github-diploma': {
           title: 'Онлайн-магазин с конструктором одежды',
-          description: 'Основной дипломный проект — полноценное веб-приложение для кастомизации одежды. Пользователь выбирает базовую модель (футболка, худи, платье), меняет ткань, цвет, добавляет принты из галереи или загружает свои. Все изменения отображаются в реальном времени на 3D-модели.',
+          description: 'Основной дипломный проект — полноценное веб-приложение для кастомизации одежды. Пользователь выбирает базовую модель, меняет ткань, цвет, добавляет принты. Все изменения отображаются в реальном времени на 3D-модели.',
           tech: ['React', 'Three.js', 'Node.js', 'PostgreSQL', 'Figma'],
           images: [
             'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&h=250&fit=crop',
@@ -982,143 +966,92 @@
         },
         'github-portfolio': {
           title: 'Личный кабинет дизайнера одежды',
-          description: 'Веб-интерфейс для управления сохранёнными дизайнами, отслеживания статуса заказа и истории покупок. Реализована система избранного и возможность поделиться своим дизайном в соцсетях.',
+          description: 'Веб-интерфейс для управления сохранёнными дизайнами, отслеживания статуса заказа и истории покупок.',
           tech: ['React', 'Redux Toolkit', 'REST API', 'JWT Auth'],
           images: [
-            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop',
-            'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=250&fit=crop'
+            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop'
           ]
         },
         'github-components': {
           title: 'UI-библиотека для fashion-приложений',
-          description: 'Набор переиспользуемых компонентов: палитра цветов ткани, галерея принтов с фильтрацией, 3D-вьювер одежды, переключатель размеров с визуальной сеткой. Всё адаптивно и доступно.',
-          tech: ['TypeScript', 'SCSS', 'Storybook', 'Jest'],
-          images: [
-            'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=250&fit=crop'
-          ]
+          description: 'Набор переиспользуемых компонентов: палитра цветов ткани, галерея принтов, 3D-вьювер одежды.',
+          tech: ['TypeScript', 'SCSS', 'Storybook'],
+          images: []
         },
-
-        // StackBlitz проекты
         'stackblitz-gallery': {
           title: 'Конструктор принтов онлайн',
-          description: 'Браузерный инструмент для создания и редактирования принтов. Можно загружать изображения, накладывать фильтры, менять масштаб и поворот. Результат сразу отображается на виртуальной футболке.',
-          tech: ['Vue.js', 'Fabric.js', 'Canvas API', 'Vite'],
-          images: [
-            'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=250&fit=crop',
-            'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&h=250&fit=crop'
-          ]
+          description: 'Браузерный инструмент для создания и редактирования принтов на одежде.',
+          tech: ['Vue.js', 'Fabric.js', 'Canvas API'],
+          images: ['https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&h=250&fit=crop']
         },
         'stackblitz-animation': {
           title: 'Анимация примерки одежды',
-          description: 'Плавные переходы между цветами и текстурами ткани, анимированная смена моделей одежды, эффект «надевания» на 3D-аватар. Всё для создания эффекта реальной примерки.',
+          description: 'Плавные переходы между цветами и текстурами ткани.',
           tech: ['React', 'Framer Motion', 'Three.js'],
-          images: [
-            'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&h=250&fit=crop'
-          ]
+          images: []
         },
         'stackblitz-form': {
           title: 'Умный подбор размера',
-          description: 'Форма с интеллектуальным подбором размера на основе введённых параметров фигуры. Визуализация посадки одежды и рекомендации по корректировке дизайна под особенности фигуры.',
+          description: 'Форма с подбором размера на основе параметров фигуры.',
           tech: ['Angular', 'Reactive Forms', 'D3.js'],
-          images: [
-            'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=400&h=250&fit=crop'
-          ]
+          images: []
         },
-
-        // Figma проекты
         'figma-museum': {
           title: 'Дизайн-система магазина одежды',
-          description: 'Полноценная дизайн-система для fashion e-commerce: сетка, типографика, цветовые токены, компоненты карточек товаров, фильтров, корзины и конструктора одежды.',
-          tech: ['Figma', 'Auto Layout', 'Design Tokens', 'Prototyping'],
-          images: [
-            'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400&h=250&fit=crop',
-            'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=400&h=250&fit=crop'
-          ]
+          description: 'Сетка, типографика, цветовые токены, компоненты интерфейса.',
+          tech: ['Figma', 'Auto Layout', 'Design Tokens'],
+          images: ['https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400&h=250&fit=crop']
         },
         'figma-identity': {
           title: 'Айдентика бренда «Свой Стиль»',
-          description: 'Разработка названия, логотипа, цветовой палитры и визуального языка для бренда кастомизируемой одежды. Брендбук, примеры упаковки и оформления соцсетей.',
-          tech: ['Figma', 'Illustrator', 'Branding', 'Typography'],
-          images: [
-            'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=250&fit=crop'
-          ]
+          description: 'Логотип, цветовая палитра, брендбук.',
+          tech: ['Figma', 'Illustrator'],
+          images: []
         },
         'figma-mobile': {
           title: 'Мобильное приложение «Свой Стиль»',
-          description: 'Дизайн мобильной версии магазина с фокусом на удобный конструктор одежды для смартфонов. Жесты, адаптивные сетки, тёмная тема.',
-          tech: ['Figma', 'iOS Design', 'Material You', 'Prototyping'],
-          images: [
-            'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&h=250&fit=crop',
-            'https://images.unsplash.com/photo-1520006403909-838d6b92c22e?w=400&h=250&fit=crop'
-          ]
+          description: 'Дизайн мобильной версии магазина с конструктором.',
+          tech: ['Figma', 'iOS Design', 'Material You'],
+          images: []
         },
-
-        // Unity проекты
         'unity-tour': {
           title: '3D-примерочная',
-          description: 'Виртуальная примерочная, где можно «надеть» спроектированную одежду на 3D-аватар, покрутить, приблизить, посмотреть, как ткань ведёт себя при движении. Интеграция с WebGL для работы в браузере.',
-          tech: ['Unity', 'C#', 'WebGL', 'Avatar SDK'],
-          images: [
-            'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=250&fit=crop',
-            'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=250&fit=crop'
-          ]
+          description: 'Виртуальная примерочная в браузере.',
+          tech: ['Unity', 'WebGL', 'Avatar SDK'],
+          images: ['https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=250&fit=crop']
         },
         'unity-exhibition': {
           title: 'Симуляция ткани',
-          description: 'Физически корректная симуляция поведения разных типов тканей (хлопок, шёлк, деним) на 3D-модели. Учитываются складки, гравитация, ветер.',
-          tech: ['Unity', 'Cloth Simulation', 'C#', 'Shader Graph'],
-          images: [
-            'https://images.unsplash.com/photo-1434389677669-e08b4cda3104?w=400&h=250&fit=crop'
-          ]
+          description: 'Физически корректная симуляция поведения тканей.',
+          tech: ['Unity', 'Cloth Simulation'],
+          images: []
         },
         'unity-patterns': {
           title: 'Генератор текстур ткани',
-          description: 'Процедурная генерация бесшовных текстур ткани (полоска, клетка, горошек, абстракция) с настраиваемыми параметрами. Можно экспортировать в PNG для использования в конструкторе.',
-          tech: ['Unity', 'Shader Graph', 'Compute Shaders'],
-          images: [
-            'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=250&fit=crop'
-          ]
+          description: 'Процедурная генерация бесшовных текстур.',
+          tech: ['Unity', 'Shader Graph'],
+          images: []
         },
-
-        // Telegram боты
         'telegram-guide': {
           title: 'Бот-стилист',
-          description: 'Чат-бот, который помогает подобрать одежду по типу фигуры, событию и предпочтениям. Предлагает готовые дизайны из каталога и может перенаправить в конструктор для кастомизации.',
-          tech: ['Python', 'Aiogram', 'PostgreSQL', 'ML рекомендации'],
-          images: [
-            'https://images.unsplash.com/photo-1611605698335-8b1569810432?w=400&h=250&fit=crop'
-          ]
+          description: 'Подбирает одежду по типу фигуры и событию.',
+          tech: ['Python', 'Aiogram', 'PostgreSQL'],
+          images: []
         },
         'telegram-portfolio': {
           title: 'Бот уведомлений о заказе',
-          description: 'Бот, который отслеживает статус заказа кастомизированной одежды и присылает уведомления: «принят в работу», «печать принта», «отправлен». Интеграция с производством через API.',
-          tech: ['Python', 'Aiogram', 'Redis', 'REST API'],
-          images: [
-            'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400&h=250&fit=crop'
-          ]
+          description: 'Отслеживает статус заказа и отправляет уведомления.',
+          tech: ['Python', 'Aiogram', 'Redis'],
+          images: []
         },
         'telegram-game': {
           title: 'Мини-игра «Модный показ»',
-          description: 'Игра в Telegram: нужно угадать, из какой коллекции представленный дизайн одежды. Рейтинг игроков, еженедельные подборки и призы — скидки на реальные заказы.',
-          tech: ['Python', 'Aiogram', 'SQLite', 'Inline Keyboards'],
-          images: [
-            'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=250&fit=crop'
-          ]
-        },
-
-        // НОВЫЙ ПРОЕКТ: Игра
-        'game-fashion': {
-          title: 'Игра «Собери свой стиль»',
-          description: 'Браузерная мини-игра, в которой игрок собирает виртуальные наряды из ограниченного набора деталей на время. Чем точнее комбинация соответствует заданной теме, тем больше очков. Создана для привлечения внимания к основному магазину.',
-          tech: ['HTML5', 'Canvas', 'JavaScript', 'CSS Animations'],
-          images: [
-            'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop',
-            'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=250&fit=crop'
-          ]
+          description: 'Угадай коллекцию по дизайну одежды.',
+          tech: ['Python', 'Aiogram', 'SQLite'],
+          images: []
         }
       };
 
-      // Данные о сервисах (добавлен раздел "game")
       const servicesData = {
         github: {
           name: 'GitHub',
@@ -1133,7 +1066,7 @@
         stackblitz: {
           name: 'StackBlitz',
           icon: 'fas fa-bolt',
-          description: 'Онлайн-среда для быстрого прототипирования. Здесь тестирую идеи для конструктора принтов и анимаций примерки.',
+          description: 'Онлайн-среда для быстрого прототипирования.',
           projects: [
             { id: 'stackblitz-gallery', name: 'Конструктор принтов онлайн', meta: 'Vue.js, Canvas API · 2026' },
             { id: 'stackblitz-animation', name: 'Анимация примерки одежды', meta: 'Framer Motion, Three.js · 2025' },
@@ -1143,7 +1076,7 @@
         figma: {
           name: 'Figma',
           icon: 'fab fa-figma',
-          description: 'Основной инструмент для дизайна интерфейсов. Создаю макеты магазина, конструктора, мобильного приложения и брендинг.',
+          description: 'Основной инструмент для дизайна интерфейсов.',
           projects: [
             { id: 'figma-museum', name: 'Дизайн-система магазина одежды', meta: 'Auto Layout, Design Tokens · 2026' },
             { id: 'figma-identity', name: 'Айдентика бренда «Свой Стиль»', meta: 'Логотип, брендбук · 2025' },
@@ -1153,7 +1086,7 @@
         unity: {
           name: 'Unity',
           icon: 'fab fa-unity',
-          description: 'Среда для 3D-визуализации. Создаю виртуальную примерочную, симуляцию ткани и генератор текстур.',
+          description: 'Среда для 3D-визуализации.',
           projects: [
             { id: 'unity-tour', name: '3D-примерочная', meta: 'WebGL, Avatar SDK · 2026' },
             { id: 'unity-exhibition', name: 'Симуляция ткани', meta: 'Cloth Simulation · 2025' },
@@ -1163,22 +1096,14 @@
         telegram: {
           name: 'Telegram-боты',
           icon: 'fas fa-robot',
-          description: 'Чат-боты для магазина: стилист, уведомления о заказах и мини-игры для привлечения клиентов.',
+          description: 'Чат-боты для магазина.',
           projects: [
             { id: 'telegram-guide', name: 'Бот-стилист', meta: 'Aiogram, ML рекомендации · 2026' },
             { id: 'telegram-portfolio', name: 'Бот уведомлений о заказе', meta: 'Aiogram, API интеграция · 2025' },
             { id: 'telegram-game', name: 'Мини-игра «Модный показ»', meta: 'Inline-кнопки, рейтинг · 2025' }
           ]
-        },
-        // НОВЫЙ РАЗДЕЛ: Игра
-        game: {
-          name: 'Игра',
-          icon: 'fas fa-gamepad',
-          description: 'Веб-игры, созданные для привлечения аудитории и развлечения. Все работают прямо в браузере.',
-          projects: [
-            { id: 'game-fashion', name: 'Игра «Собери свой стиль»', meta: 'HTML5 Canvas · 2026' }
-          ]
         }
+        // game больше нет, потому что кнопка ведёт на внешний сайт
       };
 
       const mainCard = document.getElementById('mainCard');
@@ -1187,7 +1112,6 @@
       const slideTitle = document.getElementById('slideTitle');
       const serviceDescription = document.getElementById('serviceDescription');
       const projectsList = document.getElementById('projectsList');
-
       const modal = document.getElementById('projectModal');
       const modalClose = document.getElementById('modalClose');
       const modalProjectTitle = document.getElementById('modalProjectTitle');
@@ -1195,95 +1119,57 @@
       const modalGallery = document.getElementById('modalGallery');
       const modalTech = document.getElementById('modalTech');
 
-      // Функция открытия модального окна проекта
       function openProjectModal(projectId) {
         const project = projectsDetails[projectId];
         if (!project) return;
-
         modalProjectTitle.textContent = project.title;
         modalDescription.textContent = project.description;
-
-        // Заполняем галерею
         modalGallery.innerHTML = '';
         if (project.images && project.images.length > 0) {
-          project.images.forEach(imgSrc => {
-            const imgDiv = document.createElement('div');
-            imgDiv.className = 'gallery-image';
-            
+          project.images.forEach(src => {
+            const div = document.createElement('div');
+            div.className = 'gallery-image';
             const img = new Image();
-            img.onerror = () => {
-              imgDiv.innerHTML = `
-                <div class="gallery-placeholder">
-                  <i class="fas fa-tshirt"></i>
-                  <span>фото проекта</span>
-                </div>
-              `;
-            };
-            img.onload = () => {
-              imgDiv.innerHTML = `<img src="${imgSrc}" alt="${project.title}">`;
-            };
-            img.src = imgSrc;
-            
-            modalGallery.appendChild(imgDiv);
+            img.onerror = () => { div.innerHTML = '<div class="gallery-placeholder"><i class="fas fa-tshirt"></i><span>фото проекта</span></div>'; };
+            img.onload = () => { div.innerHTML = `<img src="${src}" alt="${project.title}">`; };
+            img.src = src;
+            modalGallery.appendChild(div);
           });
         } else {
-          modalGallery.innerHTML = `
-            <div class="gallery-image">
-              <div class="gallery-placeholder">
-                <i class="fas fa-camera"></i>
-                <span>добавьте фото</span>
-              </div>
-            </div>
-          `;
+          modalGallery.innerHTML = '<div class="gallery-image"><div class="gallery-placeholder"><i class="fas fa-camera"></i><span>добавьте фото</span></div></div>';
         }
-
-        // Заполняем технологии
         modalTech.innerHTML = '';
-        if (project.tech && project.tech.length > 0) {
-          project.tech.forEach(tech => {
+        if (project.tech) {
+          project.tech.forEach(t => {
             const tag = document.createElement('span');
             tag.className = 'tech-tag';
-            tag.textContent = tech;
+            tag.textContent = t;
             modalTech.appendChild(tag);
           });
         }
-
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
 
-      // Закрытие модального окна
       function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
       }
-
       modalClose.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 
-      // Функция открытия слайда сервиса
       function openSlide(serviceKey) {
         const data = servicesData[serviceKey];
         if (!data) return;
-
         slideTitle.innerHTML = `<i class="${data.icon}"></i><span>${data.name}</span>`;
         serviceDescription.textContent = data.description;
-
         projectsList.innerHTML = '';
         data.projects.forEach(project => {
-          const projectItem = document.createElement('div');
-          projectItem.className = 'project-item';
-          projectItem.innerHTML = `
-            <div class="project-icon">
-              <i class="fas fa-code-branch"></i>
-            </div>
+          const item = document.createElement('div');
+          item.className = 'project-item';
+          item.innerHTML = `
+            <div class="project-icon"><i class="fas fa-code-branch"></i></div>
             <div class="project-info">
               <div class="project-name">${project.name}</div>
               <div class="project-meta">${project.meta}</div>
@@ -1292,18 +1178,14 @@
               <i class="fas fa-external-link-alt"></i> открыть
             </button>
           `;
-          projectsList.appendChild(projectItem);
+          projectsList.appendChild(item);
         });
-
-        // Добавляем обработчики на кнопки "открыть"
         projectsList.querySelectorAll('.project-link').forEach(btn => {
           btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const projectId = btn.dataset.projectId;
-            openProjectModal(projectId);
+            openProjectModal(btn.dataset.projectId);
           });
         });
-
         mainCard.classList.add('hidden-slide');
         infoSlide.classList.add('active');
       }
@@ -1313,23 +1195,22 @@
         infoSlide.classList.remove('active');
       }
 
-      document.querySelectorAll('.circle-link').forEach(link => {
-        link.addEventListener('click', function(e) {
+      // Назначаем обработчики на все круглые ссылки, кроме игры
+      document.querySelectorAll('.circle-link[data-service]').forEach(link => {
+        const service = link.dataset.service;
+        if (service === 'game') return; // для игры обрабатываем отдельно
+        link.addEventListener('click', (e) => {
           e.preventDefault();
-          const service = this.dataset.service;
-          if (service) openSlide(service);
+          openSlide(service);
         });
       });
 
       backButton.addEventListener('click', closeSlide);
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && infoSlide.classList.contains('active')) {
-          closeSlide();
-        }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && infoSlide.classList.contains('active')) closeSlide();
       });
 
-      console.log('✨ Сайт готов! Добавлен раздел "Игра" с проектом "Собери свой стиль".');
-      console.log('🎮 Кликайте на иконку геймпада, чтобы увидеть проект.');
+      console.log('✨ Сайт готов! Кнопка "Игра" теперь ведёт на внешний сайт (замените href в атрибуте).');
     })();
   </script>
 </body>
