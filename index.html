@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Диплом · Былков А. Д.</title>
+  <title>Диплом · Быков А. Д.</title>
   <!-- шрифт для чистого, современного вида -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +83,7 @@
       max-width: 820px;
     }
 
-    /* —— КАРТОЧКА (ГЛАВНЫЙ СЛАЙД) —— */
+    /* —— КАРТОЧКА —— */
     .card {
       width: 100%;
       background: #ffffff;
@@ -92,33 +92,6 @@
       padding: 40px 36px 44px;
       border: 1px solid #d6e9f0;
       backdrop-filter: blur(2px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .card.hidden-slide {
-      display: none;
-    }
-
-    /* —— СЛАЙД С ИНФОРМАЦИЕЙ О СЕРВИСЕ —— */
-    .info-slide {
-      width: 100%;
-      background: #ffffff;
-      border-radius: 36px;
-      box-shadow: 0 20px 40px -10px rgba(27, 55, 70, 0.12), 0 6px 12px rgba(0, 20, 30, 0.04);
-      padding: 40px 36px 44px;
-      border: 1px solid #d6e9f0;
-      backdrop-filter: blur(2px);
-      display: none;
-    }
-
-    .info-slide.active {
-      display: block;
-      animation: slideIn 0.3s ease;
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(20px); }
-      to { opacity: 1; transform: translateX(0); }
     }
 
     /* —— СВОРАЧИВАЕМЫЕ БЛОКИ —— */
@@ -245,306 +218,6 @@
 
     .store-link:hover .fa-arrow-right {
       transform: translateX(4px);
-    }
-
-    /* —— МОДАЛЬНОЕ ОКНО ПРОЕКТА —— */
-    .project-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      padding: 20px;
-    }
-
-    .project-modal.active {
-      display: flex;
-      animation: fadeIn 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal-content {
-      background: #ffffff;
-      border-radius: 32px;
-      max-width: 700px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-      border: 1px solid #d6e9f0;
-      animation: modalSlideUp 0.3s ease;
-    }
-
-    @keyframes modalSlideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .modal-header {
-      padding: 24px 28px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e0ecf2;
-    }
-
-    .modal-header h2 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #114c61;
-    }
-
-    .modal-close {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #f1f9fd;
-      border: 1px solid #cae2ed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      color: #26647a;
-      font-size: 1.3rem;
-    }
-
-    .modal-close:hover {
-      background: #e0f0f7;
-      transform: scale(1.05);
-    }
-
-    .modal-body {
-      padding: 28px;
-    }
-
-    .project-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .gallery-image {
-      aspect-ratio: 16/9;
-      background: #f1f9fd;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid #cae2ed;
-    }
-
-    .gallery-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #579eb3;
-      background: linear-gradient(135deg, #e6f2f8, #f1f9fd);
-    }
-
-    .gallery-placeholder i {
-      font-size: 3rem;
-      margin-bottom: 8px;
-      opacity: 0.6;
-    }
-
-    .gallery-placeholder span {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    .project-description {
-      padding: 20px;
-      background: #faf8f6;
-      border-radius: 20px;
-      border: 1px solid #e0ecf2;
-      margin-bottom: 24px;
-    }
-
-    .project-description h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #153b48;
-      margin-bottom: 12px;
-    }
-
-    .project-description p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #1f4456;
-    }
-
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tech-tag {
-      padding: 6px 16px;
-      background: #cde3ed;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      color: #1d4a5f;
-      font-weight: 500;
-    }
-
-    /* —— ШАПКА СЛАЙДА —— */
-    .slide-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .back-button {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #f1f9fd;
-      border: 1px solid #cae2ed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      color: #26647a;
-      font-size: 1.3rem;
-    }
-
-    .back-button:hover {
-      background: #e0f0f7;
-      transform: scale(1.05);
-    }
-
-    .slide-title {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #114c61;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .slide-title i {
-      font-size: 2.2rem;
-    }
-
-    /* —— КОНТЕНТ СЛАЙДА —— */
-    .slide-content {
-      padding: 0 8px;
-    }
-
-    .service-description {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #1f4456;
-      margin-bottom: 24px;
-      padding: 20px;
-      background: #f1f9fd;
-      border-radius: 20px;
-      border: 1px solid #cae2ed;
-    }
-
-    .projects-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #153b48;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .projects-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .project-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 20px;
-      background: #faf8f6;
-      border-radius: 16px;
-      border: 1px solid #e0ecf2;
-      transition: all 0.2s ease;
-    }
-
-    .project-item:hover {
-      background: #f1f9fd;
-      border-color: #b6d9e8;
-    }
-
-    .project-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: #cde3ed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #1d4a5f;
-      font-size: 1.3rem;
-    }
-
-    .project-info {
-      flex: 1;
-    }
-
-    .project-name {
-      font-weight: 600;
-      color: #0f3647;
-      margin-bottom: 4px;
-    }
-
-    .project-meta {
-      font-size: 0.85rem;
-      color: #4e96af;
-    }
-
-    .project-link {
-      color: #26647a;
-      text-decoration: none;
-      font-size: 0.9rem;
-      padding: 8px 16px;
-      border-radius: 30px;
-      background: #e6f2f8;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: none;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-    }
-
-    .project-link:hover {
-      background: #cde3ed;
-      color: #0a3447;
-    }
-
-    .project-link i {
-      margin-right: 6px;
     }
 
     /* —— СТИЛИ ДЛЯ ГЛАВНОЙ КАРТОЧКИ —— */
@@ -725,15 +398,11 @@
     .footer-note i { margin-right: 6px; }
 
     @media (max-width: 520px) {
-      .card, .info-slide { padding: 28px 20px; }
+      .card { padding: 28px 20px; }
       h1 { font-size: 2.2rem; }
       .circle-links { gap: 16px; }
       .icon-circle { width: 56px; height: 56px; font-size: 28px; }
       .circle-link { width: 68px; }
-      .slide-title { font-size: 1.5rem; }
-      .project-item { flex-wrap: wrap; }
-      .project-link { width: 100%; text-align: center; }
-      .modal-header h2 { font-size: 1.4rem; }
       .store-link { padding: 14px 24px; font-size: 1rem; }
     }
   </style>
@@ -757,26 +426,6 @@
     <div class="floating-emoji">🎮</div>
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ПРОЕКТА -->
-  <div class="project-modal" id="projectModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modalProjectTitle">Название проекта</h2>
-        <div class="modal-close" id="modalClose">
-          <i class="fas fa-times"></i>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="project-gallery" id="modalGallery"></div>
-        <div class="project-description">
-          <h3>О проекте</h3>
-          <p id="modalDescription">Описание проекта...</p>
-        </div>
-        <div class="project-tech" id="modalTech"></div>
-      </div>
-    </div>
-  </div>
-
   <div class="main-container">
     <!-- ГЛАВНАЯ КАРТОЧКА -->
     <div class="card" id="mainCard">
@@ -785,12 +434,12 @@
         <div class="designer-tag">
           <div class="avatar-placeholder">Б</div>
           <div class="designer-name">
-            Быkков А. Д. 
+            Быков А. Д. 
             <span>начинающий дизайнер</span>
           </div>
         </div>
         <div class="subhead">
-          цифровой продукт · веб-дизайн
+          цифровой продукт · айдентика · веб-дизайн
         </div>
       </div>
 
@@ -844,38 +493,39 @@
       
       <div class="collapsible-content" id="linksContent">
         <div class="circle-links" style="margin-bottom: 20px;">
-          <a href="FFF" class="circle-link" target="_blank" rel="noopener" data-service="game" id="gameButton">
-          <div class="circle-link" data-service="github">
+          <!-- GitHub -->
+          <a href="#" class="circle-link" target="_blank" rel="noopener" id="githubLink">
             <div class="icon-circle"><i class="fab fa-github"></i></div>
             <span class="link-label">GitHub</span>
-          </div>
           </a>
-          <a href="FFF" class="circle-link" target="_blank" rel="noopener" data-service="game" id="gameButton">
-          <div class="circle-link" data-service="stackblitz">
+          <!-- StackBlitz -->
+          <a href="#" class="circle-link" target="_blank" rel="noopener" id="stackblitzLink">
             <div class="icon-circle"><i class="fas fa-bolt"></i></div>
             <span class="link-label">StackBlitz</span>
-          </div>
           </a>
-          <a href="FFF" class="circle-link" target="_blank" rel="noopener" data-service="game" id="gameButton">
-          <div class="circle-link" data-service="figma">
+          <!-- Figma -->
+          <a href="#" class="circle-link" target="_blank" rel="noopener" id="figmaLink">
             <div class="icon-circle"><i class="fab fa-figma"></i></div>
             <span class="link-label">Figma</span>
-          </div>
           </a>
-          <a href="FFF" class="circle-link" target="_blank" rel="noopener" data-service="game" id="gameButton">
-          <div class="circle-link" data-service="unity">
+          <!-- Unity -->
+          <a href="#" class="circle-link" target="_blank" rel="noopener" id="unityLink">
             <div class="icon-circle"><i class="fab fa-unity"></i></div>
             <span class="link-label">Unity</span>
-          </div>
           </a>
-          <a href="FFF" class="circle-link" target="_blank" rel="noopener" data-service="game" id="gameButton">
+          <!-- Telegram боты -->
+          <a href="#" class="circle-link" target="_blank" rel="noopener" id="telegramLink">
             <div class="icon-circle"><i class="fas fa-robot"></i></div>
             <span class="link-label">Telegram боты</span>
           </a>
-          </div>
-          <a href="https://github.com/leha33/mayn" class="circle-link" target="_blank" rel="noopener" data-service="game" id="gameButton">
+          <!-- Игра -->
+          <a href="https://github.com/leha33/mayn" class="circle-link" target="_blank" rel="noopener" id="gameLink">
             <div class="icon-circle"><i class="fas fa-gamepad"></i></div>
             <span class="link-label">Игра</span>
+          </a>
+          <a href="#" class="circle-link" target="_blank" rel="noopener" id="blenderLink">
+            <div class="icon-circle"><i class="fas fa-robot"></i></div>
+            <span class="link-label">Blender</span>
           </a>
         </div>
       </div>
@@ -890,7 +540,7 @@
           <i class="fas fa-arrow-right"></i>
         </a>
         <div style="margin-top: 8px; font-size: 0.75rem; color: #588da1; opacity: 0.8;">
-          * замените ссылку на адрес вашего магазина
+          * замените ссылки на адреса ваших проектов
         </div>
       </div>
 
@@ -903,33 +553,44 @@
         * нажмите на заголовки, чтобы свернуть/развернуть
       </div>
     </div>
-
-    <!-- СЛАЙД С ИНФОРМАЦИЕЙ О СЕРВИСЕ -->
-    <div class="info-slide" id="infoSlide">
-      <div class="slide-header">
-        <div class="back-button" id="backButton">
-          <i class="fas fa-arrow-left"></i>
-        </div>
-        <div class="slide-title" id="slideTitle">
-          <i class="fab fa-github"></i>
-          <span>GitHub</span>
-        </div>
-      </div>
-      
-      <div class="slide-content">
-        <div class="service-description" id="serviceDescription"></div>
-        <div class="projects-title">
-          <i class="fas fa-folder-open"></i>
-          <span>Мои проекты</span>
-        </div>
-        <div class="projects-list" id="projectsList"></div>
-      </div>
-    </div>
   </div>
 
   <script>
     (function() {
-      // СВОРАЧИВАНИЕ
+      // ============================================
+      // ЗДЕСЬ ЗАМЕНИТЕ # НА ВАШИ РЕАЛЬНЫЕ ССЫЛКИ
+      // ============================================
+      const links = {
+        github: '#',        // замените на ваш GitHub
+        stackblitz: '#',    // замените на ваш StackBlitz
+        figma: '#',         // замените на ваш Figma
+        unity: '#',         // замените на ваш Unity
+        telegram: '#',      // замените на ваших Telegram ботов
+        game: '#',          // замените на вашу игру
+        store: '#'          // замените на ваш магазин одежды
+      };
+
+      // Применяем ссылки
+      document.getElementById('githubLink').href = links.github;
+      document.getElementById('stackblitzLink').href = links.stackblitz;
+      document.getElementById('figmaLink').href = links.figma;
+      document.getElementById('unityLink').href = links.unity;
+      document.getElementById('telegramLink').href = links.telegram;
+      document.getElementById('gameLink').href = links.game;
+      document.getElementById('storeLink').href = links.store;
+
+      // Предупреждение о заглушках
+      document.querySelectorAll('.circle-link, .store-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (this.getAttribute('href') === '#') {
+            e.preventDefault();
+            const label = this.querySelector('.link-label')?.innerText || 'магазин';
+            console.log('🔗 Замените # на реальную ссылку: ' + label);
+          }
+        });
+      });
+
+      // СВОРАЧИВАНИЕ / РАЗВОРАЧИВАНИЕ
       function setupCollapsible(headerId, contentId) {
         const header = document.getElementById(headerId);
         const content = document.getElementById(contentId);
@@ -939,285 +600,12 @@
           header.classList.toggle('collapsed');
         });
       }
+
       setupCollapsible('diplomaHeader', 'diplomaContent');
       setupCollapsible('linksHeader', 'linksContent');
 
-      // Заглушка для магазина
-      const storeLink = document.getElementById('storeLink');
-      storeLink.addEventListener('click', (e) => {
-        if (storeLink.getAttribute('href') === '#') {
-          e.preventDefault();
-          console.log('🛍️ Замените href на ссылку вашего магазина');
-        }
-      });
-
-      // Заглушка для игры
-      const gameButton = document.getElementById('gameButton');
-      gameButton.addEventListener('click', (e) => {
-        if (gameButton.getAttribute('href') === '#') {
-          e.preventDefault();
-          console.log('🎮 Замените href на ссылку вашей игры');
-        }
-      });
-
-      // ДАННЫЕ ПРОЕКТОВ (можете менять фото и описание)
-      const projectsDetails = {
-        'github-diploma': {
-          title: 'Онлайн-магазин с конструктором одежды',
-          description: 'Основной дипломный проект — полноценное веб-приложение для кастомизации одежды. Пользователь выбирает базовую модель, меняет ткань, цвет, добавляет принты. Все изменения отображаются в реальном времени на 3D-модели.',
-          tech: ['React', 'Three.js', 'Node.js', 'PostgreSQL', 'Figma'],
-          images: [
-            'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&h=250&fit=crop',
-            'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&h=250&fit=crop'
-          ]
-        },
-        'github-portfolio': {
-          title: 'Личный кабинет дизайнера одежды',
-          description: 'Веб-интерфейс для управления сохранёнными дизайнами, отслеживания статуса заказа и истории покупок.',
-          tech: ['React', 'Redux Toolkit', 'REST API', 'JWT Auth'],
-          images: [
-            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop'
-          ]
-        },
-        'github-components': {
-          title: 'UI-библиотека для fashion-приложений',
-          description: 'Набор переиспользуемых компонентов: палитра цветов ткани, галерея принтов, 3D-вьювер одежды.',
-          tech: ['TypeScript', 'SCSS', 'Storybook'],
-          images: []
-        },
-        'stackblitz-gallery': {
-          title: 'Конструктор принтов онлайн',
-          description: 'Браузерный инструмент для создания и редактирования принтов на одежде.',
-          tech: ['Vue.js', 'Fabric.js', 'Canvas API'],
-          images: ['https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&h=250&fit=crop']
-        },
-        'stackblitz-animation': {
-          title: 'Анимация примерки одежды',
-          description: 'Плавные переходы между цветами и текстурами ткани.',
-          tech: ['React', 'Framer Motion', 'Three.js'],
-          images: []
-        },
-        'stackblitz-form': {
-          title: 'Умный подбор размера',
-          description: 'Форма с подбором размера на основе параметров фигуры.',
-          tech: ['Angular', 'Reactive Forms', 'D3.js'],
-          images: []
-        },
-        'figma-museum': {
-          title: 'Дизайн-система магазина одежды',
-          description: 'Сетка, типографика, цветовые токены, компоненты интерфейса.',
-          tech: ['Figma', 'Auto Layout', 'Design Tokens'],
-          images: ['https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400&h=250&fit=crop']
-        },
-        'figma-identity': {
-          title: 'Айдентика бренда «Свой Стиль»',
-          description: 'Логотип, цветовая палитра, брендбук.',
-          tech: ['Figma', 'Illustrator'],
-          images: []
-        },
-        'figma-mobile': {
-          title: 'Мобильное приложение «Свой Стиль»',
-          description: 'Дизайн мобильной версии магазина с конструктором.',
-          tech: ['Figma', 'iOS Design', 'Material You'],
-          images: []
-        },
-        'unity-tour': {
-          title: '3D-примерочная',
-          description: 'Виртуальная примерочная в браузере.',
-          tech: ['Unity', 'WebGL', 'Avatar SDK'],
-          images: ['https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=250&fit=crop']
-        },
-        'unity-exhibition': {
-          title: 'Симуляция ткани',
-          description: 'Физически корректная симуляция поведения тканей.',
-          tech: ['Unity', 'Cloth Simulation'],
-          images: []
-        },
-        'unity-patterns': {
-          title: 'Генератор текстур ткани',
-          description: 'Процедурная генерация бесшовных текстур.',
-          tech: ['Unity', 'Shader Graph'],
-          images: []
-        },
-        'telegram-guide': {
-          title: 'Бот-стилист',
-          description: 'Подбирает одежду по типу фигуры и событию.',
-          tech: ['Python', 'Aiogram', 'PostgreSQL'],
-          images: []
-        },
-        'telegram-portfolio': {
-          title: 'Бот уведомлений о заказе',
-          description: 'Отслеживает статус заказа и отправляет уведомления.',
-          tech: ['Python', 'Aiogram', 'Redis'],
-          images: []
-        },
-        'telegram-game': {
-          title: 'Мини-игра «Модный показ»',
-          description: 'Угадай коллекцию по дизайну одежды.',
-          tech: ['Python', 'Aiogram', 'SQLite'],
-          images: []
-        }
-      };
-
-      const servicesData = {
-        github: {
-          name: 'GitHub',
-          icon: 'fab fa-github',
-          description: 'Платформа для хостинга и совместной разработки IT-проектов. Здесь хранится код конструктора одежды, серверной части и UI-библиотеки.',
-          projects: [
-            { id: 'github-diploma', name: 'Онлайн-магазин с конструктором одежды', meta: 'React, Three.js, Node.js · 2026' },
-            { id: 'github-portfolio', name: 'Личный кабинет дизайнера одежды', meta: 'React, Redux, JWT Auth · 2025' },
-            { id: 'github-components', name: 'UI-библиотека для fashion-приложений', meta: 'TypeScript, Storybook · 2025' }
-          ]
-        },
-        stackblitz: {
-          name: 'StackBlitz',
-          icon: 'fas fa-bolt',
-          description: 'Онлайн-среда для быстрого прототипирования.',
-          projects: [
-            { id: 'stackblitz-gallery', name: 'Конструктор принтов онлайн', meta: 'Vue.js, Canvas API · 2026' },
-            { id: 'stackblitz-animation', name: 'Анимация примерки одежды', meta: 'Framer Motion, Three.js · 2025' },
-            { id: 'stackblitz-form', name: 'Умный подбор размера', meta: 'Angular, D3.js · 2025' }
-          ]
-        },
-        figma: {
-          name: 'Figma',
-          icon: 'fab fa-figma',
-          description: 'Основной инструмент для дизайна интерфейсов.',
-          projects: [
-            { id: 'figma-museum', name: 'Дизайн-система магазина одежды', meta: 'Auto Layout, Design Tokens · 2026' },
-            { id: 'figma-identity', name: 'Айдентика бренда «Свой Стиль»', meta: 'Логотип, брендбук · 2025' },
-            { id: 'figma-mobile', name: 'Мобильное приложение «Свой Стиль»', meta: 'iOS/Android, тёмная тема · 2025' }
-          ]
-        },
-        unity: {
-          name: 'Unity',
-          icon: 'fab fa-unity',
-          description: 'Среда для 3D-визуализации.',
-          projects: [
-            { id: 'unity-tour', name: '3D-примерочная', meta: 'WebGL, Avatar SDK · 2026' },
-            { id: 'unity-exhibition', name: 'Симуляция ткани', meta: 'Cloth Simulation · 2025' },
-            { id: 'unity-patterns', name: 'Генератор текстур ткани', meta: 'Shader Graph · 2025' }
-          ]
-        },
-        telegram: {
-          name: 'Telegram-боты',
-          icon: 'fas fa-robot',
-          description: 'Чат-боты для магазина.',
-          projects: [
-            { id: 'telegram-guide', name: 'Бот-стилист', meta: 'Aiogram, ML рекомендации · 2026' },
-            { id: 'telegram-portfolio', name: 'Бот уведомлений о заказе', meta: 'Aiogram, API интеграция · 2025' },
-            { id: 'telegram-game', name: 'Мини-игра «Модный показ»', meta: 'Inline-кнопки, рейтинг · 2025' }
-          ]
-        }
-        // game больше нет, потому что кнопка ведёт на внешний сайт
-      };
-
-      const mainCard = document.getElementById('mainCard');
-      const infoSlide = document.getElementById('infoSlide');
-      const backButton = document.getElementById('backButton');
-      const slideTitle = document.getElementById('slideTitle');
-      const serviceDescription = document.getElementById('serviceDescription');
-      const projectsList = document.getElementById('projectsList');
-      const modal = document.getElementById('projectModal');
-      const modalClose = document.getElementById('modalClose');
-      const modalProjectTitle = document.getElementById('modalProjectTitle');
-      const modalDescription = document.getElementById('modalDescription');
-      const modalGallery = document.getElementById('modalGallery');
-      const modalTech = document.getElementById('modalTech');
-
-      function openProjectModal(projectId) {
-        const project = projectsDetails[projectId];
-        if (!project) return;
-        modalProjectTitle.textContent = project.title;
-        modalDescription.textContent = project.description;
-        modalGallery.innerHTML = '';
-        if (project.images && project.images.length > 0) {
-          project.images.forEach(src => {
-            const div = document.createElement('div');
-            div.className = 'gallery-image';
-            const img = new Image();
-            img.onerror = () => { div.innerHTML = '<div class="gallery-placeholder"><i class="fas fa-tshirt"></i><span>фото проекта</span></div>'; };
-            img.onload = () => { div.innerHTML = `<img src="${src}" alt="${project.title}">`; };
-            img.src = src;
-            modalGallery.appendChild(div);
-          });
-        } else {
-          modalGallery.innerHTML = '<div class="gallery-image"><div class="gallery-placeholder"><i class="fas fa-camera"></i><span>добавьте фото</span></div></div>';
-        }
-        modalTech.innerHTML = '';
-        if (project.tech) {
-          project.tech.forEach(t => {
-            const tag = document.createElement('span');
-            tag.className = 'tech-tag';
-            tag.textContent = t;
-            modalTech.appendChild(tag);
-          });
-        }
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-      modalClose.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
-
-      function openSlide(serviceKey) {
-        const data = servicesData[serviceKey];
-        if (!data) return;
-        slideTitle.innerHTML = `<i class="${data.icon}"></i><span>${data.name}</span>`;
-        serviceDescription.textContent = data.description;
-        projectsList.innerHTML = '';
-        data.projects.forEach(project => {
-          const item = document.createElement('div');
-          item.className = 'project-item';
-          item.innerHTML = `
-            <div class="project-icon"><i class="fas fa-code-branch"></i></div>
-            <div class="project-info">
-              <div class="project-name">${project.name}</div>
-              <div class="project-meta">${project.meta}</div>
-            </div>
-            <button class="project-link" data-project-id="${project.id}">
-              <i class="fas fa-external-link-alt"></i> открыть
-            </button>
-          `;
-          projectsList.appendChild(item);
-        });
-        projectsList.querySelectorAll('.project-link').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openProjectModal(btn.dataset.projectId);
-          });
-        });
-        mainCard.classList.add('hidden-slide');
-        infoSlide.classList.add('active');
-      }
-
-      function closeSlide() {
-        mainCard.classList.remove('hidden-slide');
-        infoSlide.classList.remove('active');
-      }
-
-      // Назначаем обработчики на все круглые ссылки, кроме игры
-      document.querySelectorAll('.circle-link[data-service]').forEach(link => {
-        const service = link.dataset.service;
-        if (service === 'game') return; // для игры обрабатываем отдельно
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          openSlide(service);
-        });
-      });
-
-      backButton.addEventListener('click', closeSlide);
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && infoSlide.classList.contains('active')) closeSlide();
-      });
-
-      console.log('✨ Сайт готов! Кнопка "Игра" теперь ведёт на внешний сайт (замените href в атрибуте).');
+      console.log('✨ Сайт готов! Все кнопки ведут на внешние сайты.');
+      console.log('🔗 Замените ссылки в объекте links в начале скрипта.');
     })();
   </script>
 </body>
