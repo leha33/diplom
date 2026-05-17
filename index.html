@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Диплом · Быков А. Д.</title>
-  <!-- шрифт для чистого, современного вида -->
+  <title>Диплом · Былков А. Д.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
-  <!-- Font Awesome для иконок -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -31,7 +29,6 @@
       overflow-x: hidden;
     }
 
-    /* —— КОНТЕЙНЕР ДЛЯ ЛЕТАЮЩИХ СМАЙЛИКОВ —— */
     .emoji-background {
       position: fixed;
       top: 0;
@@ -66,6 +63,7 @@
     .floating-emoji:nth-child(11) { top: 35%; left: 75%; animation-duration: 19s; animation-delay: -11s; font-size: 2.7rem; opacity: 0.22; }
     .floating-emoji:nth-child(12) { top: 75%; left: 30%; animation-duration: 26s; animation-delay: -1s; font-size: 2.5rem; opacity: 0.2; }
     .floating-emoji:nth-child(13) { top: 55%; left: 55%; animation-duration: 21s; animation-delay: -14s; font-size: 2.6rem; opacity: 0.22; }
+    .floating-emoji:nth-child(14) { top: 20%; left: 50%; animation-duration: 24s; animation-delay: -6s; font-size: 2.4rem; opacity: 0.2; }
 
     @keyframes floatEmoji {
       0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
@@ -75,7 +73,6 @@
       100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
     }
 
-    /* —— ОСНОВНОЙ КОНТЕЙНЕР —— */
     .main-container {
       position: relative;
       z-index: 10;
@@ -83,7 +80,6 @@
       max-width: 820px;
     }
 
-    /* —— КАРТОЧКА —— */
     .card {
       width: 100%;
       background: #ffffff;
@@ -94,7 +90,116 @@
       backdrop-filter: blur(2px);
     }
 
-    /* —— СВОРАЧИВАЕМЫЕ БЛОКИ —— */
+    .card.hidden-slide {
+      display: none;
+    }
+
+    .figma-slide {
+      width: 100%;
+      background: #ffffff;
+      border-radius: 36px;
+      box-shadow: 0 20px 40px -10px rgba(27, 55, 70, 0.12), 0 6px 12px rgba(0, 20, 30, 0.04);
+      padding: 40px 36px 44px;
+      border: 1px solid #d6e9f0;
+      backdrop-filter: blur(2px);
+      display: none;
+    }
+
+    .figma-slide.active {
+      display: block;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .figma-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .back-button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #f1f9fd;
+      border: 1px solid #cae2ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #26647a;
+      font-size: 1.3rem;
+    }
+
+    .back-button:hover {
+      background: #e0f0f7;
+      transform: scale(1.05);
+    }
+
+    .figma-header h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #114c61;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .figma-header h2 i {
+      color: #a259ff;
+      font-size: 2.2rem;
+    }
+
+    .figma-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .figma-image {
+      aspect-ratio: 4 / 3;
+      background: #f1f9fd;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #cae2ed;
+    }
+
+    .figma-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .figma-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #a259ff;
+      background: linear-gradient(135deg, #f8f5ff, #f1ecff);
+      gap: 10px;
+    }
+
+    .figma-placeholder i {
+      font-size: 3rem;
+      opacity: 0.5;
+    }
+
+    .figma-placeholder span {
+      font-size: 0.9rem;
+      opacity: 0.6;
+      font-weight: 500;
+    }
+
     .collapsible-header {
       display: flex;
       align-items: center;
@@ -141,7 +246,6 @@
       margin-bottom: 0;
     }
 
-    /* —— ПЛАТФОРМА HTML БЛОК —— */
     .platform-badge {
       display: inline-flex;
       align-items: center;
@@ -178,9 +282,14 @@
       display: flex;
       gap: 8px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
-    /* —— ССЫЛКА НА МАГАЗИН —— */
+    /* Нейросети иконка */
+    .fa-brain {
+      color: #8b5cf6;
+    }
+
     .store-link-container {
       margin-top: 28px;
       text-align: center;
@@ -220,7 +329,6 @@
       transform: translateX(4px);
     }
 
-    /* —— СТИЛИ ДЛЯ ГЛАВНОЙ КАРТОЧКИ —— */
     .intro { margin-bottom: 28px; }
     .badge {
       display: inline-block;
@@ -280,40 +388,37 @@
       font-size: 1rem;
       margin-left: 8px;
     }
-    .diploma-section {
+
+    .workflow-text {
       background: #f1f9fd;
-      border-radius: 24px;
-      padding: 26px 30px;
+      border-radius: 20px;
+      padding: 20px 24px;
       margin-bottom: 28px;
       border: 1px solid #cae2ed;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #1f4456;
     }
-    .diploma-title {
-      font-size: 1.5rem;
-      font-weight: 600;
+
+    .handmade-block {
+      background: linear-gradient(135deg, #fef9f0, #fdf5e6);
+      border: 1px solid #e8dcc8;
+      border-radius: 20px;
+      padding: 18px 22px;
       margin-bottom: 16px;
+      text-align: center;
+      font-weight: 600;
+      color: #5c4a2e;
+      font-size: 1.05rem;
       display: flex;
       align-items: center;
-      gap: 12px;
-      color: #114c61;
+      justify-content: center;
+      gap: 10px;
     }
-    .diploma-title i { color: #579eb3; font-size: 1.7rem; }
-    .diploma-desc {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #1f4456;
-      margin-bottom: 18px;
-    }
-    .diploma-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px 30px;
-      font-size: 0.95rem;
-      color: #2c6a80;
-    }
-    .diploma-meta i { margin-right: 6px; color: #4e96af; width: 18px; text-align: center; }
-    
-    .diploma-wrapper {
-      margin-bottom: 20px;
+
+    .handmade-block i {
+      color: #c8943e;
+      font-size: 1.3rem;
     }
 
     .links-heading {
@@ -374,8 +479,8 @@
     .fa-bolt { color: #1269D3; }
     .fa-figma { color: #a259ff; }
     .fa-unity { color: #222c37; }
-    .fa-robot { color: #26A5E4; }
     .fa-gamepad { color: #7c3aed; }
+    .fa-cube { color: #f5792a; }
     .link-label {
       font-size: 0.85rem;
       font-weight: 500;
@@ -398,18 +503,18 @@
     .footer-note i { margin-right: 6px; }
 
     @media (max-width: 520px) {
-      .card { padding: 28px 20px; }
+      .card, .figma-slide { padding: 28px 20px; }
       h1 { font-size: 2.2rem; }
       .circle-links { gap: 16px; }
       .icon-circle { width: 56px; height: 56px; font-size: 28px; }
       .circle-link { width: 68px; }
       .store-link { padding: 14px 24px; font-size: 1rem; }
+      .figma-gallery { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎈 ЛЕТАЮЩИЕ СМАЙЛИКИ -->
   <div class="emoji-background">
     <div class="floating-emoji">👕</div>
     <div class="floating-emoji">✨</div>
@@ -424,6 +529,7 @@
     <div class="floating-emoji">💻</div>
     <div class="floating-emoji">🎯</div>
     <div class="floating-emoji">🎮</div>
+    <div class="floating-emoji">🤖</div>
   </div>
 
   <div class="main-container">
@@ -434,54 +540,35 @@
         <div class="designer-tag">
           <div class="avatar-placeholder">Б</div>
           <div class="designer-name">
-            Быков А. Д. 
+            Былков А. Д. 
             <span>начинающий дизайнер</span>
           </div>
         </div>
         <div class="subhead">
-          цифровой продукт · айдентика · веб-дизайн
+          цифровой продукт · веб-дизайн
         </div>
       </div>
 
-      <!-- ПЛАТФОРМА HTML -->
+      <!-- "работаю с" + нейросети -->
       <div class="platform-badge">
         <i class="fas fa-globe"></i>
-        <span>Сделано на</span>
+        <span>работаю с</span>
         <div class="tech-icons">
           <i class="fab fa-html5"></i> HTML
           <span style="color:#5e7d8c;">+</span>
           <i class="fab fa-css3-alt"></i> CSS
           <span style="color:#5e7d8c;">+</span>
           <i class="fab fa-js"></i> JavaScript
+          <span style="color:#5e7d8c;">+</span>
+          <i class="fas fa-brain"></i> нейросети
         </div>
       </div>
 
-      <!-- СВОРАЧИВАЕМЫЙ БЛОК: ДИПЛОМ -->
-      <div class="diploma-wrapper">
-        <div class="diploma-title collapsible-header" id="diplomaHeader">
-          <span style="display: flex; align-items: center; gap: 12px;">
-            <i class="fas fa-tshirt"></i> 
-            Онлайн-магазин одежды с конструктором дизайна
-          </span>
-          <div class="collapse-icon">
-            <i class="fas fa-chevron-down"></i>
-          </div>
-        </div>
-        <div class="collapsible-content" id="diplomaContent">
-          <div class="diploma-section" style="margin-top: 16px; margin-bottom: 0;">
-            <div class="diploma-desc">
-            свою работу я делал на github птмучто он беспатнй, ноначинали мы с начало в jsitor у него всего один минус он не сохраняет работу и нет хостинга, нужен что бы бысрто посмореь код.также мы использовали figma он нужен как чернвиг для сайта, тум можн показать как буде выгледить в готовом виде. после этого я перешол на stackblitz - работает также как jsitor, но намнго прдвинутый. и рабтали в телераме создовая ботов  
-            </div>
-            <div class="diploma-meta">
-              <div><i class="fas fa-calendar-alt"></i> 2025–2026</div>
-              <div><i class="fas fa-pencil-ruler"></i> Figma, Three.js, React</div>
-              <div><i class="fas fa-code"></i> WebGL, Node.js, PostgreSQL</div>
-            </div>
-          </div>
-        </div>
+      <!-- ТЕКСТ ПРО ИНСТРУМЕНТЫ -->
+      <div class="workflow-text">
+        Свою работу я делал на GitHub, потому что он бесплатный. Но начинали мы сначала в Jsitor — у него всего один минус: он не сохраняет работу и нет хостинга. Нужен, чтобы быстро посмотреть код. Также мы использовали Figma — он нужен как черновик для сайта, там можно показать, как будет выглядеть в готовом виде. После этого я перешёл на StackBlitz — работает так же, как Jsitor, но намного продвинутей. И работали в Telegram, создавая ботов.
       </div>
 
-      <!-- СВОРАЧИВАЕМЫЙ БЛОК: ССЫЛКИ -->
       <div class="links-heading collapsible-header" id="linksHeader">
         <span style="display: flex; align-items: center; gap: 8px;">
           <i class="fas fa-arrow-circle-right"></i> мои инструменты и проекты
@@ -493,104 +580,140 @@
       
       <div class="collapsible-content" id="linksContent">
         <div class="circle-links" style="margin-bottom: 20px;">
-          <!-- GitHub -->
           <a href="#" class="circle-link" target="_blank" rel="noopener" id="githubLink">
             <div class="icon-circle"><i class="fab fa-github"></i></div>
             <span class="link-label">GitHub</span>
           </a>
-          <!-- StackBlitz -->
           <a href="#" class="circle-link" target="_blank" rel="noopener" id="stackblitzLink">
             <div class="icon-circle"><i class="fas fa-bolt"></i></div>
             <span class="link-label">StackBlitz</span>
           </a>
-          <!-- Figma -->
-          <a href="#" class="circle-link" target="_blank" rel="noopener" id="figmaLink">
+          <div class="circle-link" id="figmaButton">
             <div class="icon-circle"><i class="fab fa-figma"></i></div>
             <span class="link-label">Figma</span>
-          </a>
-          <!-- Unity -->
+          </div>
           <a href="#" class="circle-link" target="_blank" rel="noopener" id="unityLink">
             <div class="icon-circle"><i class="fab fa-unity"></i></div>
             <span class="link-label">Unity</span>
           </a>
-          <!-- Telegram боты -->
-          <a href="#" class="circle-link" target="_blank" rel="noopener" id="telegramLink">
-            <div class="icon-circle"><i class="fas fa-robot"></i></div>
-            <span class="link-label">Telegram боты</span>
+          <a href="#" class="circle-link" target="_blank" rel="noopener" id="blenderLink">
+            <div class="icon-circle"><i class="fas fa-cube"></i></div>
+            <span class="link-label">Blender</span>
           </a>
-          <!-- Игра -->
-          <a href="https://github.com/leha33/mayn" class="circle-link" target="_blank" rel="noopener" id="gameLink">
+          <a href="#" class="circle-link" target="_blank" rel="noopener" id="gameLink">
             <div class="icon-circle"><i class="fas fa-gamepad"></i></div>
             <span class="link-label">Игра</span>
-          </a>
-          <a href="#" class="circle-link" target="_blank" rel="noopener" id="blenderLink">
-            <div class="icon-circle"><i class="fas fa-robot"></i></div>
-            <span class="link-label">Blender</span>
           </a>
         </div>
       </div>
 
       <hr>
       
-      <!-- ССЫЛКА НА МАГАЗИН -->
+      <div class="handmade-block">
+        <i class="fas fa-tshirt"></i>
+        «Самодельные вещи У-И» — handmade на заказ
+      </div>
+
       <div class="store-link-container">
         <a href="#" class="store-link" target="_blank" rel="noopener" id="storeLink">
           <i class="fas fa-shopping-bag"></i>
           Перейти в онлайн-магазин одежды
           <i class="fas fa-arrow-right"></i>
         </a>
-        <div style="margin-top: 8px; font-size: 0.75rem; color: #588da1; opacity: 0.8;">
-          * замените ссылки на адреса ваших проектов
-        </div>
       </div>
 
       <div class="footer-note" style="margin-top: 20px;">
-        <span><i class="far fa-smile"></i> Быков А. Д. · начинающий дизайнер</span>
+        <span><i class="far fa-smile"></i> Былков А. Д. · начинающий дизайнер</span>
         <span><i class="fas fa-map-pin"></i> диплом 2026</span>
       </div>
+    </div>
 
-      <div style="margin-top: 12px; font-size: 0.75rem; color: #588da1; text-align: right; opacity: 0.8;">
-        * нажмите на заголовки, чтобы свернуть/развернуть
+    <!-- СЛАЙД С РАБОТАМИ FIGMA -->
+    <div class="figma-slide" id="figmaSlide">
+      <div class="figma-header">
+        <div class="back-button" id="figmaBackButton">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+        <h2>
+          <i class="fab fa-figma"></i>
+          Мои работы в Figma
+        </h2>
       </div>
+      <div class="figma-gallery" id="figmaGallery"></div>
     </div>
   </div>
 
   <script>
     (function() {
-      // ============================================
-      // ЗДЕСЬ ЗАМЕНИТЕ # НА ВАШИ РЕАЛЬНЫЕ ССЫЛКИ
-      // ============================================
+      const figmaImages = [
+        '#',
+        '#',
+        '#'
+      ];
+
       const links = {
-        github: '#',        // замените на ваш GitHub
-        stackblitz: '#',    // замените на ваш StackBlitz
-        figma: '#',         // замените на ваш Figma
-        unity: '#',         // замените на ваш Unity
-        telegram: '#',      // замените на ваших Telegram ботов
-        game: '#',          // замените на вашу игру
-        store: '#'          // замените на ваш магазин одежды
+        github: '#',
+        stackblitz: '#',
+        unity: '#',
+        blender: '#',
+        game: '#',
+        store: '#'
       };
 
-      // Применяем ссылки
+      const figmaGallery = document.getElementById('figmaGallery');
+      figmaImages.forEach((src, index) => {
+        const div = document.createElement('div');
+        div.className = 'figma-image';
+        
+        if (src === '#' || src === '') {
+          div.innerHTML = `
+            <div class="figma-placeholder">
+              <i class="fab fa-figma"></i>
+              <span>картинка ${index + 1}</span>
+            </div>
+          `;
+        } else {
+          const img = new Image();
+          img.onerror = () => {
+            div.innerHTML = `
+              <div class="figma-placeholder">
+                <i class="fas fa-image"></i>
+                <span>не загрузилось</span>
+              </div>
+            `;
+          };
+          img.onload = () => {
+            div.innerHTML = '';
+            div.appendChild(img);
+          };
+          img.src = src;
+        }
+        
+        figmaGallery.appendChild(div);
+      });
+
       document.getElementById('githubLink').href = links.github;
       document.getElementById('stackblitzLink').href = links.stackblitz;
-      document.getElementById('figmaLink').href = links.figma;
       document.getElementById('unityLink').href = links.unity;
-      document.getElementById('telegramLink').href = links.telegram;
+      document.getElementById('blenderLink').href = links.blender;
       document.getElementById('gameLink').href = links.game;
       document.getElementById('storeLink').href = links.store;
 
-      // Предупреждение о заглушках
-      document.querySelectorAll('.circle-link, .store-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-          if (this.getAttribute('href') === '#') {
-            e.preventDefault();
-            const label = this.querySelector('.link-label')?.innerText || 'магазин';
-            console.log('🔗 Замените # на реальную ссылку: ' + label);
-          }
-        });
+      const mainCard = document.getElementById('mainCard');
+      const figmaSlide = document.getElementById('figmaSlide');
+      const figmaButton = document.getElementById('figmaButton');
+      const figmaBackButton = document.getElementById('figmaBackButton');
+
+      figmaButton.addEventListener('click', () => {
+        mainCard.classList.add('hidden-slide');
+        figmaSlide.classList.add('active');
       });
 
-      // СВОРАЧИВАНИЕ / РАЗВОРАЧИВАНИЕ
+      figmaBackButton.addEventListener('click', () => {
+        mainCard.classList.remove('hidden-slide');
+        figmaSlide.classList.remove('active');
+      });
+
       function setupCollapsible(headerId, contentId) {
         const header = document.getElementById(headerId);
         const content = document.getElementById(contentId);
@@ -601,11 +724,7 @@
         });
       }
 
-      setupCollapsible('diplomaHeader', 'diplomaContent');
       setupCollapsible('linksHeader', 'linksContent');
-
-      console.log('✨ Сайт готов! Все кнопки ведут на внешние сайты.');
-      console.log('🔗 Замените ссылки в объекте links в начале скрипта.');
     })();
   </script>
 </body>
